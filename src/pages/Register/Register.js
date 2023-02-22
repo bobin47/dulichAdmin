@@ -1,15 +1,19 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
 
-import { rules } from '../../utils/rules';
+import { schemaRegister } from '../../utils/rules';
+import Input from '../../components/Input/Input';
 
 export default function Register() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(schemaRegister),
+  });
   const handleRegister = handleSubmit((data) => {
     console.log(data);
   });
@@ -22,65 +26,59 @@ export default function Register() {
           className='bg-white rounded-[12px] p-10 shadow-2xl'
         >
           <div className='text-center text-[30px]'>Đăng ký</div>
-          <div className='mt-6'>
-            <input
-              type='text'
-              className='w-full p-3 border shadow-sm border-gray-300 focus:border-gray-500 rounded-sm'
-              placeholder='Tài khoảng'
-              {...register('taiKhoan', rules.taikhoan)}
-            />
-            <div className='text-red-600'>{errors.taiKhoan?.message}</div>
-          </div>
+          <Input
+            className={'mt-6'}
+            type='text'
+            placeholder='Tài khoảng'
+            register={register}
+            name='taiKhoan'
+            errorMessage={errors.taiKhoan?.message}
+          />
 
-          <div className='mt-6'>
-            <input
-              type='password'
-              className='w-full p-3 border shadow-sm border-gray-300 focus:border-gray-500 rounded-sm'
-              placeholder='Mật khẩu'
-              {...register('matKhau', rules.password)}
-            />
-            <div className='text-red-600'>{errors.matKhau?.message}</div>
-          </div>
+          <Input
+            className={'mt-6'}
+            type='password'
+            placeholder='Mật khẩu'
+            register={register}
+            name='matKhau'
+            errorMessage={errors.matKhau?.message}
+          />
 
-          <div className='mt-6'>
-            <input
-              type='text'
-              className='w-full p-3 border shadow-sm border-gray-300 focus:border-gray-500 rounded-sm'
-              placeholder='Họ tên'
-              {...register('hoTen', rules.name)}
-            />
-            <div className='text-red-600'>{errors.hoTen?.message}</div>
-          </div>
+          <Input
+            className={'mt-6'}
+            type='text'
+            placeholder='Họ tên'
+            register={register}
+            name='hoTen'
+            errorMessage={errors.hoTen?.message}
+          />
 
-          <div className='mt-6'>
-            <input
-              type='text'
-              className='w-full p-3 border shadow-sm border-gray-300 focus:border-gray-500 rounded-sm'
-              placeholder='SDT'
-              {...register('soDT', rules.SDT)}
-            />
-            <div className='text-red-600'>{errors.soDT?.message}</div>
-          </div>
+          <Input
+            className={'mt-6'}
+            type='text'
+            placeholder='SDT'
+            register={register}
+            name='soDT'
+            errorMessage={errors.soDT?.message}
+          />
 
-          <div className='mt-6'>
-            <input
-              type='text'
-              className='w-full p-3 border shadow-sm border-gray-300 focus:border-gray-500 rounded-sm'
-              placeholder='maNhom'
-              {...register('maNhom', rules.MaNhom)}
-            />
-            <div className='text-red-600'>{errors.maNhom?.message}</div>
-          </div>
+          <Input
+            className={'mt-6'}
+            type='text'
+            placeholder='Ma Nhom'
+            register={register}
+            name='maNhom'
+            errorMessage={errors.maNhom?.message}
+          />
 
-          <div className='mt-6'>
-            <input
-              type='text'
-              className='w-full p-3 border shadow-sm border-gray-300 focus:border-gray-500 rounded-sm'
-              placeholder='email'
-              {...register('email', rules.email)}
-            />
-            <div className='text-red-600'>{errors.email?.message}</div>
-          </div>
+          <Input
+            className={'mt-6'}
+            type='text'
+            placeholder='email'
+            register={register}
+            name='email'
+            errorMessage={errors.email?.message}
+          />
 
           <div className='mt-6'>
             <button className='w-full bg-orange-400 text-white p-3'>
