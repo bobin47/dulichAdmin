@@ -42,7 +42,7 @@ export const schemaRegister = yup.object({
     .min(6, 'tren 6 ky tu'),
   matKhau: yup.string().required('mat khau la bat buoc').min(6, 'tren 6 ky tu'),
   hoTen: yup.string().required('ho ten la bat buoc'),
-  SDT: yup.number().required('SDT la Bat buoc'),
+  SDT: yup.number(),
   maNhom: yup.string().required('Ma nhom la bat  buoc'),
   email: yup
     .string()

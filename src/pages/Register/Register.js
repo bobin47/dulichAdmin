@@ -14,9 +14,16 @@ export default function Register() {
   } = useForm({
     resolver: yupResolver(schemaRegister),
   });
-  const handleRegister = handleSubmit((data) => {
-    console.log(data);
-  });
+  const handleRegister = handleSubmit(
+    (data) => {
+      console.log(data);
+      console.log('hihi');
+    },
+    (data) => {
+      console.log(data);
+    }
+  );
+
   return (
     <div className='flex justify-center'>
       <div className='w-[700px] h-[750px] m-10 '>
@@ -81,7 +88,10 @@ export default function Register() {
           />
 
           <div className='mt-6'>
-            <button className='w-full bg-orange-400 text-white p-3'>
+            <button
+              type='submit'
+              className='w-full bg-orange-400 text-white p-3'
+            >
               Đăng ký
             </button>
           </div>
