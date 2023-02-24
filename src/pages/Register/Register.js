@@ -5,6 +5,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { schemaRegister } from "../../utils/rules";
 import Input from "../../components/Input/Input";
+import { useDispatch } from "react-redux";
+
+import { registerAccount } from "../../store/features/auth/authSlice";
 
 export default function Register() {
   const {
@@ -14,16 +17,17 @@ export default function Register() {
   } = useForm({
     resolver: yupResolver(schemaRegister),
   });
+  const dispatch = useDispatch();
+
   const handleRegister = handleSubmit(
     (data) => {
       console.log(data);
-      console.log("hihi");
+      dispatch(registerAccount(data));
     },
     (data) => {
       console.log(data);
     }
   );
-  console.log("hihi");
 
   return (
     <div className="flex justify-center">

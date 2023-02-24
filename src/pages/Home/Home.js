@@ -1,5 +1,7 @@
-import React from 'react';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { ahihi } from "../../store/features/auth/authSlice";
 
 export default function Home() {
-  return <div>Home</div>;
+  return <div>home</div>;
 }
