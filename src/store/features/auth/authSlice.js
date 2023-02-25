@@ -20,6 +20,8 @@ export const loginAccount = createAsyncThunk(
 
 const initialState = {
   isAuthenticated: false,
+  messError: null,
+  isLoading: false,
 };
 
 const authSlice = createSlice({
@@ -34,15 +36,24 @@ const authSlice = createSlice({
     builder.addCase(registerAccount.fulfilled, (state, action) => {});
     builder.addCase(registerAccount.rejected, (state, action) => {});
     builder.addCase(registerAccount.pending, (state, action) => {});
-
     builder.addCase(loginAccount.fulfilled, (state, action) => {
       const { payload } = action;
-      console.log(payload);
       localStorage.setItem("user", JSON.stringify(payload));
-      return { ...state, isAuthenticated: true };
+      return {
+        ...state,
+        isAuthenticated: true,
+        messError: null,
+        isLoading: false,
+      };
     });
-    builder.addCase(loginAccount.rejected, (state, action) => {});
-    builder.addCase(loginAccount.pending, (state, action) => {});
+    builder.addCase(loginAccount.rejected, (state, action) => {
+      console.log(state);
+      console.log(action);
+      return { ...state, messError: "Dang nhap that bai", isLoading: false };
+    });
+    builder.addCase(loginAccount.pending, (state, action) => {
+      state.isLoading = true;
+    });
   },
 });
 

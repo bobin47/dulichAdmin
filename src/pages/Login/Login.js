@@ -6,11 +6,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "../../components/Input/Input";
 import { loginAccount } from "../../store/features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import { Spin } from "antd";
 
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated, messError, isLoading } = useSelector(
+    (state) => state.user
+  );
 
   const {
     register,
@@ -24,13 +28,13 @@ export default function Login() {
     if (isAuthenticated) {
       navigate("/");
     }
-  }, [isAuthenticated, navigate]);
+    toast.error(messError);
+  }, [isAuthenticated, navigate, messError]);
 
   const handleRegister = handleSubmit((data) => {
     console.log(data);
     dispatch(loginAccount(data));
   });
-
   return (
     <div className="flex justify-center">
       <div className="w-[700px] h-[750px] m-20 ">
@@ -58,8 +62,12 @@ export default function Login() {
             errorMessage={errors.matKhau?.message}
           />
 
-          <div className="mt-6">
-            <button className="w-full bg-orange-400 text-white p-3">
+          <div className="mt-6 flex">
+            <button
+              className="w-full bg-orange-400 text-white p-3 "
+              disabled={isLoading ? true : false}
+            >
+              {isLoading ? <Spin className="mr-3" size="small" /> : null}
               Đăng Nhập
             </button>
           </div>
