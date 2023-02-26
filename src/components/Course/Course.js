@@ -31,9 +31,10 @@ export default function Course({ category }) {
         </div>
       </div> */}
       {newArr &&
-        newArr.map((course) => {
+        newArr.map((course, index) => {
           return (
             <Link
+              key={index}
               to={`/detail/${course.maKhoaHoc}`}
               className="text-black col-span-3"
             >

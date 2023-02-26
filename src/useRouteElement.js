@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useRoutes, Navigate, Outlet } from "react-router-dom";
 import Layout from "./layout/layoutLR/Layout";
 import LayoutMain from "./layout/LayoutMain/LayoutMain";
+import Detail from "./pages/Detail/Detail";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
@@ -47,6 +48,14 @@ export default function useRouteElement() {
           element: (
             <LayoutMain>
               <Profile />
+            </LayoutMain>
+          ),
+        },
+        {
+          path: "/detail/:id",
+          element: (
+            <LayoutMain>
+              <Detail />
             </LayoutMain>
           ),
         },

@@ -22,6 +22,7 @@ export default function Navigate() {
             "bg-gray-200": active === "home",
           }
         )}
+        onClick={() => setActive("home")}
       >
         <HomeFilled className="text-2xl" />
         Home

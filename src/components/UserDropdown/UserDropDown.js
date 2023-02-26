@@ -18,7 +18,7 @@ export default function UserDropDown() {
   const dispatch = useDispatch();
   const data = JSON.parse(localStorage.getItem("user"));
 
-  const { x, y, strategy, refs, context } = useFloating({
+  const { strategy, refs, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
   });

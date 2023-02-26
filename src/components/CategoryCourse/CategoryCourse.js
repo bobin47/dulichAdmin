@@ -19,7 +19,7 @@ export default function CategoryCourse() {
       {categoryCourse &&
         categoryCourse.map((category, index) => {
           return (
-            <div className="mb-10">
+            <div className="mb-10" key={index}>
               <h2 className="mb-4 font-black text-xl">{category.tenDanhMuc}</h2>
               <div className="text-black grid grid-cols-12 gap-4 w-[95%] mx-auto">
                 <Course category={category.maDanhMuc} />
