@@ -14,7 +14,7 @@ export default class SimpleSlider extends Component {
     };
     return (
       <div className="mt-5">
-        <div className="w-[80%] mx-auto mb-7 ">
+        <div className="w-[90%] mx-auto mb-7 ">
           <Slider {...settings}>
             <div>
               <img

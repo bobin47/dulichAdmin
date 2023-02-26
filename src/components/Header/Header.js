@@ -1,7 +1,11 @@
 import React from "react";
-import { SearchOutlined } from "@ant-design/icons";
+import { SearchOutlined, SmileFilled } from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import UserDropDown from "../UserDropdown/UserDropDown";
 
 export default function Header() {
+  const isAuth = window.localStorage.getItem("user");
+  console.log(isAuth);
   return (
     <div className="flex justify-between border-bot border-b-2 border-gray-300 p-4 items-center">
       <div className="font-bold ">Học Lập trình để đi làm</div>
@@ -12,11 +16,18 @@ export default function Header() {
           placeholder="Tìm kiếm khoá học"
         ></input>
       </div>
-      <div>
-        <a className="px-6 py-2 bg-orange-600 text-white rounded-2xl cursor-pointer">
-          Đăng nhập
-        </a>
-      </div>
+      {isAuth ? (
+        <UserDropDown />
+      ) : (
+        <div>
+          <Link
+            to="/login"
+            className="px-6 py-2  bg-orange-600 text-white rounded-2xl cursor-pointer"
+          >
+            Đăng nhập
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
