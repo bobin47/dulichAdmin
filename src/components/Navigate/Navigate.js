@@ -27,7 +27,7 @@ export default function Navigate() {
         Home
       </Link>
       <Link
-        to="/profile"
+        to=""
         className={classNames(
           "flex flex-col items-center p-3 rounded-3xl hover:bg-gray-200",
           {
