@@ -5,7 +5,6 @@ import UserDropDown from "../UserDropdown/UserDropDown";
 
 export default function Header() {
   const isAuth = window.localStorage.getItem("user");
-  console.log(isAuth);
   return (
     <div className="flex justify-between border-bot border-b-2 border-gray-300 p-4 items-center">
       <div className="font-bold ">Học Lập trình để đi làm</div>
