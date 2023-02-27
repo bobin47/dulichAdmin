@@ -32,6 +32,14 @@ export default function useRouteElement() {
       ),
     },
     {
+      path: "/detail/:id",
+      element: (
+        <LayoutMain>
+          <Detail />
+        </LayoutMain>
+      ),
+    },
+    {
       path: "/",
       element: <ProtectedRoute />,
       children: [
@@ -44,18 +52,18 @@ export default function useRouteElement() {
           ),
         },
         {
-          path: "/profile",
-          element: (
-            <LayoutMain>
-              <Profile />
-            </LayoutMain>
-          ),
-        },
-        {
           path: "/detail/:id",
           element: (
             <LayoutMain>
               <Detail />
+            </LayoutMain>
+          ),
+        },
+        {
+          path: "/profile",
+          element: (
+            <LayoutMain>
+              <Profile />
             </LayoutMain>
           ),
         },

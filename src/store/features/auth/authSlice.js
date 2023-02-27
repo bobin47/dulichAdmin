@@ -38,6 +38,7 @@ const authSlice = createSlice({
     builder.addCase(registerAccount.pending, (state, action) => {});
     builder.addCase(loginAccount.fulfilled, (state, action) => {
       const { payload } = action;
+      console.log("payload", payload);
       localStorage.setItem("user", JSON.stringify(payload));
       return {
         ...state,
@@ -49,7 +50,7 @@ const authSlice = createSlice({
     builder.addCase(loginAccount.rejected, (state, action) => {
       console.log(state);
       console.log(action);
-      return { ...state, messError: "Dang nhap that bai", isLoading: false };
+      return { ...state, messError: "Đăng nhập thất bại", isLoading: false };
     });
     builder.addCase(loginAccount.pending, (state, action) => {
       state.isLoading = true;

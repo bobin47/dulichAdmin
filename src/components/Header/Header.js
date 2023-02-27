@@ -7,7 +7,9 @@ export default function Header() {
   const isAuth = window.localStorage.getItem("user");
   return (
     <div className="flex justify-between border-bot border-b-2 border-gray-300 p-4 items-center">
-      <div className="font-bold ">Học Lập trình để đi làm</div>
+      <Link to="/" className="font-bold ">
+        Học Lập trình để đi làm
+      </Link>
       <div className="border border-gray-400 flex justify-start items-center focus:border-black p-1 rounded-3xl w-[400px]">
         <SearchOutlined twoToneColor="#9AA3B0" className="m-2 fill-gray-400" />
         <input

@@ -7,3 +7,11 @@ export const AllCourseApi = () => {
 export const CategoryCourse = () => {
   return http.get("/QuanLyKhoaHoc/LayDanhMucKhoaHoc");
 };
+
+export const DetailCourseApi = (id) => {
+  return http.get(`/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${id}`);
+};
+
+export const RegisterCourseApi = (data) => {
+  return http.post("/QuanLyKhoaHoc/DangKyKhoaHoc", data);
+};

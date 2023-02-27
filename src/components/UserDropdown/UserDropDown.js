@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import { SearchOutlined, SmileFilled } from "@ant-design/icons";
 import {
-  useHuseFloating,
   useHover,
   useInteractions,
-  offset,
-  autoUpdateover,
   useFloating,
   safePolygon,
 } from "@floating-ui/react";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { logout } from "../../store/features/auth/authSlice";
 
 export default function UserDropDown() {

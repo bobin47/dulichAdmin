@@ -1,5 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { AllCourseApi, CategoryCourse } from "../../../api/course";
+import { ToastContainer, toast } from "react-toastify";
+
+import {
+  AllCourseApi,
+  CategoryCourse,
+  DetailCourseApi,
+  RegisterCourseApi,
+} from "../../../api/course";
 
 // First, create the thunk
 export const allCourseAction = createAsyncThunk(
@@ -11,9 +18,26 @@ export const allCourseAction = createAsyncThunk(
 );
 
 export const categoryCourseAction = createAsyncThunk(
-  "course/categoryCourse",
+  "course/categoryCourseAction",
   async (data, thunkAPI) => {
     const response = await CategoryCourse();
+    return response.data;
+  }
+);
+
+export const detailCourseAction = createAsyncThunk(
+  "course/detailCourse",
+  async (data, thunkAPI) => {
+    const response = await DetailCourseApi(data);
+    return response.data;
+  }
+);
+
+export const registerCourseAction = createAsyncThunk(
+  "course/registerCourseAction",
+  async (data, thunkAPI) => {
+    console.log(data);
+    const response = await RegisterCourseApi(data);
     return response.data;
   }
 );
@@ -22,6 +46,7 @@ const initialState = {
   isLoading: false,
   categoryCourse: [],
   Courses: [],
+  detail: {},
 };
 
 const courseSlice = createSlice({
@@ -40,6 +65,35 @@ const courseSlice = createSlice({
     });
     builder.addCase(categoryCourseAction.pending, (state, action) => {});
     builder.addCase(categoryCourseAction.rejected, (state, action) => {});
+
+    builder.addCase(detailCourseAction.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.detail = action.payload;
+    });
+    builder.addCase(detailCourseAction.pending, (state, action) => {});
+    builder.addCase(detailCourseAction.rejected, (state, action) => {});
+
+    builder.addCase(registerCourseAction.fulfilled, (state, action) => {
+      console.log(action.payload);
+      if (action.payload === "Ghi danh thành công!") {
+        toast.success(action.payload);
+      }
+    });
+    builder.addCase(registerCourseAction.pending, (state, action) => {});
+    builder.addCase(registerCourseAction.rejected, (state, action) => {
+      console.log(action.error.code);
+      if (action.error.code === "ERR_BAD_RESPONSE") {
+        toast.warn("Bạn đã đăng ký khoá này rồi");
+      }
+    });
+
+    // builder.addCase(registerCourseAction.fulfilled, (state, action) => {
+    //   console.log(action.payload);
+    //   // state.detail = action.payload;
+    //   // return { ...state };
+    // });
+    // builder.addCase(registerCourseAction.pending, (state, action) => {});
+    // builder.addCase(registerCourseAction.rejected, (state, action) => {});
   },
 });
 
