@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   HomeFilled,
   IdcardFilled,
@@ -9,61 +9,60 @@ import {
 import classNames from "classnames";
 
 export default function Navigate() {
-  const [active, setActive] = useState("home");
-  console.log(active);
+  const user = JSON.parse(localStorage.getItem("user"));
+  let activeStyle = {
+    backgroundColor: "rgb(229 231 235)",
+  };
 
   return (
     <div className="flex flex-col gap-3 p-3">
-      <Link
+      <NavLink
         to="/"
         className={classNames(
-          "flex flex-col items-center py-3  rounded-3xl hover:bg-gray-200",
-          {
-            "bg-gray-200": active === "home",
-          }
+          "flex flex-col items-center py-3  rounded-3xl hover:bg-gray-200"
         )}
-        onClick={() => setActive("home")}
+        style={({ isActive }) => {
+          return isActive ? activeStyle : null;
+        }}
       >
         <HomeFilled className="text-2xl" />
         Home
-      </Link>
-      <Link
-        to=""
+      </NavLink>
+      <NavLink
+        to="/lotrinh"
         className={classNames(
-          "flex flex-col items-center p-3 rounded-3xl hover:bg-gray-200",
-          {
-            "bg-gray-200": active === "profile",
-          }
+          "flex flex-col items-center p-3 rounded-3xl hover:bg-gray-200"
         )}
-        onClick={() => setActive("profile")}
+        style={({ isActive }) => {
+          return isActive ? activeStyle : null;
+        }}
       >
         <IdcardFilled className="text-2xl" />
         Lo trinh
-      </Link>
-      <Link
+      </NavLink>
+      <NavLink
+        to="/learn"
         className={classNames(
-          "flex flex-col items-center p-3 rounded-3xl hover:bg-gray-200",
-          {
-            "bg-gray-200": active === "hoc",
-          }
+          "flex flex-col items-center p-3 rounded-3xl hover:bg-gray-200"
         )}
-        onClick={() => setActive("hoc")}
+        style={({ isActive }) => (isActive ? activeStyle : null)}
       >
         <BookFilled className="text-2xl" />
         Hoc
-      </Link>
-      <Link
-        className={classNames(
-          "flex flex-col items-center p-3 rounded-3xl hover:bg-gray-200",
-          {
-            "bg-gray-200": active === "blog",
-          }
-        )}
-        onClick={() => setActive("blog")}
-      >
-        <SwitcherFilled className="text-2xl" />
-        Blog
-      </Link>
+      </NavLink>
+
+      {user ? (
+        <NavLink
+          to="/profile"
+          className={classNames(
+            "flex flex-col items-center p-3 rounded-3xl hover:bg-gray-200"
+          )}
+          style={({ isActive }) => (isActive ? activeStyle : null)}
+        >
+          <SwitcherFilled className="text-2xl" />
+          Profile
+        </NavLink>
+      ) : null}
     </div>
   );
 }

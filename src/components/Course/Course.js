@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { allCourseAction } from "../../store/features/CourseSlice/CourseSlice";
 
 export default function Course({ category }) {
@@ -9,6 +9,7 @@ export default function Course({ category }) {
   useEffect(() => {
     dispatch(allCourseAction());
   }, []);
+
   const newArr = Courses?.filter((course) => {
     return course.danhMucKhoaHoc.maDanhMucKhoahoc === category;
   });
@@ -33,7 +34,7 @@ export default function Course({ category }) {
       {newArr &&
         newArr.map((course, index) => {
           return (
-            <Link
+            <NavLink
               key={index}
               to={`/detail/${course.maKhoaHoc}`}
               className="text-black col-span-3"
@@ -53,7 +54,7 @@ export default function Course({ category }) {
                   luot xem:{course.luotXem}
                 </div>
               </div>
-            </Link>
+            </NavLink>
           );
         })}
     </>

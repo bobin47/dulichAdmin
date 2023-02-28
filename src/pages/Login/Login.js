@@ -13,9 +13,12 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isAuthenticated, messError, isLoading } = useSelector(
-    (state) => state.user
+    (state) => state.auth
   );
 
+  console.log(isAuthenticated, messError, isLoading);
+
+  const data = localStorage.getItem("user");
   const {
     register,
     handleSubmit,
@@ -25,16 +28,19 @@ export default function Login() {
   });
 
   useEffect(() => {
-    if (isAuthenticated) {
+    console.log("hihi");
+    if (data) {
       navigate("/");
     }
     toast.error(messError);
-  }, [isAuthenticated, navigate, messError]);
+    console.log(messError);
+  }, [messError, data, navigate]);
 
   const handleRegister = handleSubmit((data) => {
     console.log(data);
     dispatch(loginAccount(data));
   });
+
   return (
     <div className="flex justify-center">
       <div className="w-[700px] h-[750px] m-20 ">

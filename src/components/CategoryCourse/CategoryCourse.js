@@ -8,7 +8,7 @@ import {
 
 export default function CategoryCourse() {
   const dispatch = useDispatch();
-  const { categoryCourse } = useSelector((state) => state.course);
+  const { categoryCourse, isLoading } = useSelector((state) => state.course);
   useEffect(() => {
     dispatch(allCourseAction());
     dispatch(categoryCourseAction());
@@ -16,17 +16,16 @@ export default function CategoryCourse() {
 
   return (
     <div>
-      {categoryCourse &&
-        categoryCourse.map((category, index) => {
-          return (
-            <div className="mb-10" key={index}>
-              <h2 className="mb-4 font-black text-xl">{category.tenDanhMuc}</h2>
-              <div className="text-black grid grid-cols-12 gap-4 w-[95%] mx-auto">
-                <Course category={category.maDanhMuc} />
-              </div>
+      {categoryCourse.map((category, index) => {
+        return (
+          <div className="mb-10" key={index}>
+            <h2 className="mb-4 font-black text-xl">{category.tenDanhMuc}</h2>
+            <div className="text-black grid grid-cols-12 gap-4 w-[95%] mx-auto">
+              <Course category={category.maDanhMuc} />
             </div>
-          );
-        })}
+          </div>
+        );
+      })}
     </div>
   );
 }

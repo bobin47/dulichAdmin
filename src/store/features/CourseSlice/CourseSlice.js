@@ -8,6 +8,13 @@ import {
   RegisterCourseApi,
 } from "../../../api/course";
 
+const initialState = {
+  isLoading: false,
+  categoryCourse: [],
+  Courses: [],
+  detail: [],
+};
+
 // First, create the thunk
 export const allCourseAction = createAsyncThunk(
   "course/allCourse",
@@ -42,22 +49,18 @@ export const registerCourseAction = createAsyncThunk(
   }
 );
 
-const initialState = {
-  isLoading: false,
-  categoryCourse: [],
-  Courses: [],
-  detail: {},
-};
-
 const courseSlice = createSlice({
-  name: "users",
+  name: "courses",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(allCourseAction.fulfilled, (state, action) => {
       state.Courses = action.payload;
+      state.isLoading = false;
     });
-    builder.addCase(allCourseAction.pending, (state, action) => {});
+    builder.addCase(allCourseAction.pending, (state, action) => {
+      state.isLoading = true;
+    });
     builder.addCase(allCourseAction.rejected, (state, action) => {});
 
     builder.addCase(categoryCourseAction.fulfilled, (state, action) => {
