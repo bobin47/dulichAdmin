@@ -1,77 +1,111 @@
-import React from "react";
-import { Space, Table, Tag } from "antd";
-const columns = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-    render: (text) => <a>{text}</a>,
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
-  },
-  {
-    title: "Tags",
-    key: "tags",
-    dataIndex: "tags",
-    render: (_, { tags }) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? "geekblue" : "green";
-          if (tag === "loser") {
-            color = "volcano";
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
-  },
-  {
-    title: "Action",
-    key: "action",
-    render: (_, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
-  },
-];
-const data = [
-  {
-    key: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"],
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park",
-    tags: ["loser"],
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sydney No. 1 Lake Park",
-    tags: ["cool", "teacher"],
-  },
-];
+import React, { useEffect, useState } from "react";
+import { Space, Table, Button, Tag, Modal } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  allUserAction,
+  deleteUserAction,
+} from "../../store/features/UserSlice/UserSlice";
 
 export default function UserAdmin() {
-  return <Table columns={columns} dataSource={data} />;
+  const dispatch = useDispatch();
+  const [search, setSearch] = useState();
+  const { allUser } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(allUserAction());
+  }, []);
+
+  const handleEdit = (data) => {
+    console.log(data);
+  };
+
+  const handleDelete = (data) => {
+    console.log(data);
+    Modal.confirm({
+      title: "Bạn có muốn xoá user này",
+      okText: "Yes",
+      okType: "danger",
+      cancelText: "No",
+      onOk() {
+        console.log("OK");
+        console.log(data.taiKhoan);
+        dispatch(deleteUserAction(data.taiKhoan));
+      },
+      onCancel() {
+        console.log("Cancel");
+      },
+    });
+  };
+
+  const columns = [
+    {
+      title: "Tài khoản",
+      dataIndex: "taiKhoan",
+      key: "taiKhoan",
+    },
+    {
+      title: "Họ tên",
+      dataIndex: "hoTen",
+      key: "hoTen",
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+    },
+    {
+      title: "Số điện thoại",
+      dataIndex: "soDt",
+      key: "soDt",
+    },
+    {
+      title: "Mã loại",
+      dataIndex: "maLoaiNguoiDung",
+      key: "maLoaiNguoiDung",
+      render: (_, { maLoaiNguoiDung }) => {
+        let color = maLoaiNguoiDung.length > 5 ? "geekblue" : "green";
+        if (maLoaiNguoiDung === "HV") {
+          color = "magenta";
+        } else if (maLoaiNguoiDung === "GV") {
+          color = "green";
+        }
+
+        return (
+          <Tag color={color} key={maLoaiNguoiDung}>
+            {maLoaiNguoiDung.toUpperCase()}
+          </Tag>
+        );
+      },
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (data, record) => {
+        return (
+          <Space size="small">
+            <Button block onClick={() => handleEdit(record)}>
+              Edit
+            </Button>
+            <Button type="primary" danger onClick={() => handleDelete(record)}>
+              Delete
+            </Button>
+          </Space>
+        );
+      },
+    },
+  ];
+
+  const data = allUser;
+  const datas = allUser?.filter((user) => user.taiKhoan === search);
+
+  return (
+    <div>
+      <input value={search} onChange={(e) => setSearch(e.target.value)}></input>
+      <Table
+        columns={columns}
+        dataSource={search ? datas : data}
+        pagination={{ position: ["bottomCenter"] }}
+      />
+    </div>
+  );
 }

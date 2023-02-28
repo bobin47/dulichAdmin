@@ -11,7 +11,7 @@ export default function LayoutAdmin({ children }) {
     <div>
       <Header input={false} />
       <div className=" grid grid-cols-12 ">
-        <div className="col-span-1 h-[600px] border-r-2">
+        <div className="col-span-1  border-r-2">
           <div className="flex flex-col gap-3 items-center">
             <NavLink
               className="capitalize"
@@ -36,7 +36,7 @@ export default function LayoutAdmin({ children }) {
             </NavLink>
           </div>
         </div>
-        <div className="col-span-11 h-[600px] p-3"> {children}</div>
+        <div className="col-span-11  p-3"> {children}</div>
       </div>
 
       <Footer />
