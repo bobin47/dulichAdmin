@@ -6,6 +6,7 @@ import {
   CategoryCourse,
   DetailCourseApi,
   RegisterCourseApi,
+  addCourseApi,
 } from "../../../api/course";
 
 const initialState = {
@@ -45,6 +46,15 @@ export const registerCourseAction = createAsyncThunk(
   async (data, thunkAPI) => {
     console.log(data);
     const response = await RegisterCourseApi(data);
+    return response.data;
+  }
+);
+
+export const addCourseAction = createAsyncThunk(
+  "course/addCourseAction",
+  async (data, thunkAPI) => {
+    console.log(data);
+    const response = await addCourseApi(data);
     return response.data;
   }
 );
@@ -90,13 +100,13 @@ const courseSlice = createSlice({
       }
     });
 
-    // builder.addCase(registerCourseAction.fulfilled, (state, action) => {
-    //   console.log(action.payload);
-    //   // state.detail = action.payload;
-    //   // return { ...state };
-    // });
-    // builder.addCase(registerCourseAction.pending, (state, action) => {});
-    // builder.addCase(registerCourseAction.rejected, (state, action) => {});
+    builder.addCase(addCourseAction.fulfilled, (state, action) => {
+      console.log(action.payload);
+      // state.detail = action.payload;
+      // return { ...state };
+    });
+    builder.addCase(addCourseAction.pending, (state, action) => {});
+    builder.addCase(addCourseAction.rejected, (state, action) => {});
   },
 });
 

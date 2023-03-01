@@ -15,3 +15,7 @@ export const DetailCourseApi = (id) => {
 export const RegisterCourseApi = (data) => {
   return http.post("/QuanLyKhoaHoc/DangKyKhoaHoc", data);
 };
+
+export const addCourseApi = (data) => {
+  return http.post("/QuanLyKhoaHoc/ThemKhoaHoc", data);
+};
