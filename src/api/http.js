@@ -29,7 +29,6 @@ class Http {
 
     this.https.interceptors.response.use(
       function (response) {
-        console.log(response);
         return response;
       },
       function (error) {

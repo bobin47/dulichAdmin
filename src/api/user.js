@@ -11,3 +11,11 @@ export const allUserApi = () => {
 export const deleteUserApi = (data) => {
   return http.delete(`/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${data}`);
 };
+
+export const addUserApi = (data) => {
+  return http.post("/QuanLyNguoiDung/ThemNguoiDung", data);
+};
+
+export const updateUserApi = (data) => {
+  return http.put("/QuanLyNguoiDung/CapNhatThongTinNguoiDung", data);
+};
