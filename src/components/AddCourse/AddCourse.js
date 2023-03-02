@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   categoryCourseAction,
   addCourseAction,
+  imgCourseAction,
 } from "../../store/features/CourseSlice/CourseSlice";
 import { UploadOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
@@ -11,7 +12,7 @@ const { Option } = Select;
 
 export default function AddCourse() {
   const [open, setOpen] = useState(false);
-  const [day, setDay] = useState(false);
+  const [day, setDay] = useState("");
 
   const dispatch = useDispatch();
   const { categoryCourse } = useSelector((state) => state.course);
@@ -23,8 +24,13 @@ export default function AddCourse() {
   };
 
   const onFinish = (values) => {
+    const file = values.hinhAnh.file.originFileObj;
     const data = { ...values, hinhAnh: values.hinhAnh.file.name, ngayTao: day };
+    const formData = new FormData();
+    formData.append("img", file, file.name);
+
     dispatch(addCourseAction(data));
+    dispatch(imgCourseAction(formData));
   };
 
   const onChange = (date, dateString) => {
@@ -205,13 +211,23 @@ export default function AddCourse() {
               },
             ]}
           >
+            {/* <input
+              type="file"
+              accept="image/jpeg, image/png, image/jpg"
+              onChange={handleChangeFile}
+            />
+            <br />
+            <div style={{ width: 200, height: "auto" }}>
+              <img src={imgSrc} alt="" />
+            </div> */}
+
             <Upload
               name="hinhAnh"
               accept=".png,.jpg,.doc"
               multiple
               action={"http://localhost:3000"}
               listType="picture"
-              showUploadList={{ showRemoveIcon: true }}
+              showUploadList={{ showRemoveIcon: false }}
             >
               <Button icon={<UploadOutlined />}>Click to Upload</Button>
             </Upload>

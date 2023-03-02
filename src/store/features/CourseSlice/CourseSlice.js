@@ -7,6 +7,9 @@ import {
   DetailCourseApi,
   RegisterCourseApi,
   addCourseApi,
+  imgCourseApi,
+  deleteCourseApi,
+  updateCourseApi,
 } from "../../../api/course";
 
 const initialState = {
@@ -59,6 +62,33 @@ export const addCourseAction = createAsyncThunk(
   }
 );
 
+export const imgCourseAction = createAsyncThunk(
+  "course/imgCourseAction",
+  async (data, thunkAPI) => {
+    console.log(data);
+    const response = await imgCourseApi(data);
+    return response.data;
+  }
+);
+
+export const deleteCourseAction = createAsyncThunk(
+  "course/deleteCourseAction",
+  async (data, thunkAPI) => {
+    console.log(data);
+    const response = await deleteCourseApi(data);
+    return response.data;
+  }
+);
+
+export const updateCourseAction = createAsyncThunk(
+  "course/updateCourseAction",
+  async (data, thunkAPI) => {
+    console.log(data);
+    const response = await updateCourseApi(data);
+    return response.data;
+  }
+);
+
 const courseSlice = createSlice({
   name: "courses",
   initialState,
@@ -107,6 +137,46 @@ const courseSlice = createSlice({
     });
     builder.addCase(addCourseAction.pending, (state, action) => {});
     builder.addCase(addCourseAction.rejected, (state, action) => {});
+
+    builder.addCase(imgCourseAction.fulfilled, (state, action) => {
+      console.log(action.payload);
+      // state.detail = action.payload;
+      // return { ...state };
+    });
+    builder.addCase(imgCourseAction.pending, (state, action) => {});
+    builder.addCase(imgCourseAction.rejected, (state, action) => {
+      console.log(action);
+    });
+
+    builder.addCase(deleteCourseAction.fulfilled, (state, action) => {
+      console.log(action.payload);
+      if (action.payload === "Xóa thành công") {
+        toast.success(action.payload);
+      }
+      // state.detail = action.payload;
+      // return { ...state };
+    });
+    builder.addCase(deleteCourseAction.pending, (state, action) => {});
+    builder.addCase(deleteCourseAction.rejected, (state, action) => {
+      if (action.error.code === "ERR_BAD_RESPONSE") {
+        toast.warn("co hoc vien dang ky khoa hoc");
+      }
+    });
+
+    builder.addCase(updateCourseAction.fulfilled, (state, action) => {
+      console.log(action);
+      if (action.meta.requestStatus === "fulfilled") {
+        toast.success("Update khoa hoc thanh cong");
+      }
+      // state.detail = action.payload;
+      // return { ...state };
+    });
+    builder.addCase(updateCourseAction.pending, (state, action) => {});
+    builder.addCase(updateCourseAction.rejected, (state, action) => {
+      if (action.error.code === "ERR_BAD_RESPONSE") {
+        toast.error("update khong thanh cong");
+      }
+    });
   },
 });
 

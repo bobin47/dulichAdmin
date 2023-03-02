@@ -19,3 +19,15 @@ export const RegisterCourseApi = (data) => {
 export const addCourseApi = (data) => {
   return http.post("/QuanLyKhoaHoc/ThemKhoaHoc", data);
 };
+
+export const imgCourseApi = (data) => {
+  return http.post("/QuanLyKhoaHoc/ThemKhoaHocUploadHinh", data);
+};
+
+export const deleteCourseApi = (data) => {
+  return http.delete(`/QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${data}`);
+};
+
+export const updateCourseApi = (data) => {
+  return http.put("/QuanLyKhoaHoc/CapNhatKhoaHoc", data);
+};
