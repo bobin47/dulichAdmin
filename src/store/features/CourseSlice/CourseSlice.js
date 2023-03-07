@@ -139,7 +139,7 @@ const courseSlice = createSlice({
     builder.addCase(addCourseAction.rejected, (state, action) => {});
 
     builder.addCase(imgCourseAction.fulfilled, (state, action) => {
-      console.log(action.payload);
+      console.log(action);
       // state.detail = action.payload;
       // return { ...state };
     });

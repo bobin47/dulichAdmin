@@ -10,7 +10,10 @@ import {
   Input,
   Select,
   Image,
+  Upload,
 } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   allCourseAction,
@@ -23,7 +26,6 @@ const { Option } = Select;
 export default function CourseAdmin() {
   const dispatch = useDispatch();
   const { Courses, categoryCourse } = useSelector((state) => state.course);
-
   const [open, setOpen] = useState(false);
   const [form] = Form.useForm();
   useEffect(() => {
@@ -46,8 +48,9 @@ export default function CourseAdmin() {
       },
     });
   };
+
   const handleEdit = (data) => {
-    console.log(data);
+    console.log("data", data);
     setOpen(true);
     form.setFieldsValue({
       maKhoaHoc: data.maKhoaHoc,
@@ -63,21 +66,20 @@ export default function CourseAdmin() {
       taiKhoanNguoiTao: data.taiKhoanNguoiTao,
     });
   };
+
   const onClose = () => {
     setOpen(false);
-  };
-
-  const showDrawer = () => {
-    setOpen(true);
   };
 
   const onFinish = (values) => {
     console.log(values);
     dispatch(updateCourseAction(values));
   };
+
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
   const columns = [
     {
       title: "Ten khoa hoc",
@@ -139,6 +141,7 @@ export default function CourseAdmin() {
   ];
 
   const data = Courses;
+
   return (
     <div>
       <div className="text-black font-bold text-3xl mb-3">Quản lý Khoa hoc</div>
@@ -272,7 +275,18 @@ export default function CourseAdmin() {
               },
             ]}
           >
-            <Input />
+            {/* <Input /> */}
+
+            <Upload
+              name="hinhAnh"
+              accept=".png,.jpg,.doc"
+              multiple
+              action={"http://localhost:3000"}
+              listType="picture"
+              showUploadList={{ showRemoveIcon: true }}
+            >
+              <Button icon={<UploadOutlined />}>Click to Upload</Button>
+            </Upload>
           </Form.Item>
 
           <Form.Item

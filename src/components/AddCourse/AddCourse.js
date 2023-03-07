@@ -25,11 +25,21 @@ export default function AddCourse() {
 
   const onFinish = (values) => {
     const file = values.hinhAnh.file.originFileObj;
-    const data = { ...values, hinhAnh: values.hinhAnh.file.name, ngayTao: day };
-    const formData = new FormData();
-    formData.append("img", file, file.name);
 
-    dispatch(addCourseAction(data));
+    const data = {
+      ...values,
+      hinhAnh: file,
+      ngayTao: day,
+    };
+
+    console.log(data);
+    const formData = new FormData();
+    for (const key in data) {
+      formData.append(key, data[key]);
+    }
+    // const formData = new FormData();
+    // formData.append("img", file, file.name);
+    // dispatch(addCourseAction(data));
     dispatch(imgCourseAction(formData));
   };
 
