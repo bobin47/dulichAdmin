@@ -16,21 +16,6 @@ export default function Course({ category }) {
 
   return (
     <>
-      {/* <div className="text-black col-span-3 ">
-        <div>
-          <img
-            className="w-full h-full rounded-3xl"
-            src="https://files.fullstack.edu.vn/f8-prod/courses/15/62f13d2424a47.png"
-            alt="hinh"
-          />
-        </div>
-        <div>
-          <div className="text-lg font-bold capitalize py-2 px-3">
-            ten khoa hoc
-          </div>
-          <div className="text-sm capitalize px-3">luot xem: 10</div>
-        </div>
-      </div> */}
       {newArr &&
         newArr.map((course, index) => {
           return (

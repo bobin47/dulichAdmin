@@ -20,7 +20,7 @@ import AddUser from "../../components/AddUser/AddUser";
 const { Option } = Select;
 export default function UserAdmin() {
   const dispatch = useDispatch();
-  const [search, setSearch] = useState();
+  const [filter, setFilter] = useState("");
   const { allUser, isLoading } = useSelector((state) => state.user);
   const [open, setOpen] = useState(false);
   const [form] = Form.useForm();
@@ -33,6 +33,14 @@ export default function UserAdmin() {
       title: "Tài khoản",
       dataIndex: "taiKhoan",
       key: "taiKhoan",
+      filteredValue: [filter],
+      onFilter: (value, record) => {
+        // console.log(record);
+        console.log(value);
+        return String(record.taiKhoan)
+          .toLowerCase()
+          .includes(value.toLowerCase());
+      },
     },
     {
       title: "Họ tên",
@@ -132,27 +140,31 @@ export default function UserAdmin() {
     console.log("Failed:", errorInfo);
   };
 
-  const data = allUser;
-  const datas = allUser?.filter((user) => user.taiKhoan === search);
+  // const data = allUser;
+  // const datas = allUser?.filter((user) => user.taiKhoan === search);
 
   return (
     <div>
       <div className="text-black font-bold text-3xl mb-3">
         Quản lý người dùng
       </div>
-      <AddUser title={" Thêm người dùng"} />
-      {/* <Button
+      <div className="flex gap-3">
+        <AddUser title={" Thêm người dùng"} />
+        {/* <Button
         onClick={showDrawer}
         className="bg-blue-500 text-white hover:text-white"
       >
         Thêm người dùng
       </Button> */}
-      <input value={search} onChange={(e) => setSearch(e.target.value)}></input>
+        <Input.Search className="w-[50%]" onChange={(e)=>{
+          setFilter(e.target.value)
+        }}/>
+      </div>
       <Table
         className="mt-3"
         loading={isLoading}
         columns={columns}
-        dataSource={search ? datas : data}
+        dataSource={allUser}
         pagination={{ position: ["bottomCenter"] }}
       />
 

@@ -27,6 +27,8 @@ export default function CourseAdmin() {
   const dispatch = useDispatch();
   const { Courses, categoryCourse } = useSelector((state) => state.course);
   const [open, setOpen] = useState(false);
+  const [filter, setFilter] = useState("");
+
   const [form] = Form.useForm();
   useEffect(() => {
     dispatch(allCourseAction());
@@ -85,6 +87,12 @@ export default function CourseAdmin() {
       title: "Ten khoa hoc",
       dataIndex: "tenKhoaHoc",
       key: "tenKhoaHoc",
+      filteredValue: [filter],
+      onFilter: (value, record) => {
+        // console.log(record);
+        console.log(value)
+        return String(record.tenKhoaHoc).toLowerCase().includes(value.toLowerCase())
+      },
     },
     {
       title: "ma khoa hoc",
@@ -145,7 +153,12 @@ export default function CourseAdmin() {
   return (
     <div>
       <div className="text-black font-bold text-3xl mb-3">Quản lý Khoa hoc</div>
-      <AddCourse />
+      <div className="w-[50%] flex items-center gap-3">
+        <AddCourse />
+        <Input.Search onChange={(e)=>{
+          setFilter(e.target.value)
+        }}/>
+      </div>
       <Table columns={columns} dataSource={data} />
       <Drawer
         title="Basic Drawer"
