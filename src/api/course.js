@@ -31,3 +31,25 @@ export const deleteCourseApi = (data) => {
 export const updateCourseApi = (data) => {
   return http.put("/QuanLyKhoaHoc/CapNhatKhoaHoc", data);
 };
+
+export const listUserNotAccept = (data) =>{
+  return http.post(
+    "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungChuaGhiDanh",data
+  );
+}
+
+export const listUserAccept = (data) => {
+  return http.post(
+    "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachHocVienKhoaHoc",
+    data
+  );
+};
+
+export const GhiDanh = (data) => {
+  return http.post("/QuanLyKhoaHoc/GhiDanhKhoaHoc", data);
+};
+
+export const HuyGhiDanh = (data) => {
+  return http.post("/QuanLyKhoaHoc/HuyGhiDanh", data);
+};
+

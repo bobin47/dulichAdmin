@@ -19,8 +19,10 @@ import {
   allCourseAction,
   deleteCourseAction,
   updateCourseAction,
+  listUserNotAcceptAction
 } from "../../store/features/CourseSlice/CourseSlice";
 import AddCourse from "../../components/AddCourse/AddCourse";
+import { NavLink } from "react-router-dom";
 const { Option } = Select;
 
 export default function CourseAdmin() {
@@ -32,6 +34,8 @@ export default function CourseAdmin() {
   const [form] = Form.useForm();
   useEffect(() => {
     dispatch(allCourseAction());
+    dispatch(listUserNotAcceptAction("1636363554904"));
+
   }, [dispatch]);
 
   const handleDelete = (value) => {
@@ -44,6 +48,7 @@ export default function CourseAdmin() {
         console.log("OK");
         console.log(value);
         dispatch(deleteCourseAction(value));
+        
       },
       onCancel() {
         console.log("Cancel");
@@ -90,14 +95,17 @@ export default function CourseAdmin() {
       filteredValue: [filter],
       onFilter: (value, record) => {
         // console.log(record);
-        console.log(value)
-        return String(record.tenKhoaHoc).toLowerCase().includes(value.toLowerCase())
+        console.log(value);
+        return String(record.tenKhoaHoc)
+          .toLowerCase()
+          .includes(value.toLowerCase());
       },
     },
     {
       title: "ma khoa hoc",
       dataIndex: "maKhoaHoc",
       key: "maKhoaHoc",
+      render: (text) => <NavLink to={`${text}`}>{text}</NavLink>,
     },
     {
       title: "luot xem",

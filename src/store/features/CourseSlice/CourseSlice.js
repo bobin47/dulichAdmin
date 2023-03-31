@@ -10,6 +10,10 @@ import {
   imgCourseApi,
   deleteCourseApi,
   updateCourseApi,
+  listUserNotAccept,
+  listUserAccept,
+  GhiDanh,
+  HuyGhiDanh
 } from "../../../api/course";
 
 const initialState = {
@@ -17,6 +21,9 @@ const initialState = {
   categoryCourse: [],
   Courses: [],
   detail: [],
+  listUserNotAccept: [],
+  listUserAccept: [],
+  mess:null
 };
 
 // First, create the thunk
@@ -89,11 +96,81 @@ export const updateCourseAction = createAsyncThunk(
   }
 );
 
+export const listUserNotAcceptAction = createAsyncThunk(
+  "course/listUserNotAcceptAction",
+  async (data, thunkAPI) => {
+    const response = await listUserNotAccept(data);
+    return response.data;
+  }
+);
+
+export const listUserAcceptAction = createAsyncThunk(
+  "course/listUserAccept",
+  async (data, thunkAPI) => {
+    const response = await listUserAccept(data);
+    return response.data;
+  }
+);
+
+export const ghiDanhAction = createAsyncThunk(
+  "course/ghiDanhAction",
+  async (data, thunkAPI) => {
+    const response = await GhiDanh(data);
+    return response.data;
+  }
+);
+
+export const huyGhiDanhAction = createAsyncThunk(
+  "course/huyGhiDanhAction",
+  async (data, thunkAPI) => {
+    const response = await HuyGhiDanh(data);
+    console.log(response)
+    return response.data;
+  }
+);
+
 const courseSlice = createSlice({
   name: "courses",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+
+    builder.addCase(ghiDanhAction.fulfilled, (state, action) => {
+      state.mess = action.payload
+    });
+    builder.addCase(ghiDanhAction.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(ghiDanhAction.rejected, (state, action) => {});
+
+    builder.addCase(huyGhiDanhAction.fulfilled, (state, action) => {
+      state.mess = action.payload;
+    });
+    builder.addCase(huyGhiDanhAction.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(huyGhiDanhAction.rejected, (state, action) => {
+      console.log(action)
+    });
+
+    builder.addCase(listUserAcceptAction.fulfilled, (state, action) => {
+      state.listUserAccept = action.payload;
+      state.isLoading = true;
+    });
+    builder.addCase(listUserAcceptAction.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(listUserAcceptAction.rejected, (state, action) => {});
+
+    builder.addCase(listUserNotAcceptAction.fulfilled, (state, action) => {
+     state.listUserNotAccept = action.payload
+      state.isLoading = true;
+    });
+    builder.addCase(listUserNotAcceptAction.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(listUserNotAcceptAction.rejected, (state, action) => {});
+
     builder.addCase(allCourseAction.fulfilled, (state, action) => {
       state.Courses = action.payload;
       state.isLoading = false;

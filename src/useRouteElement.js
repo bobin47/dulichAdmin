@@ -14,16 +14,15 @@ import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
 import Register from "./pages/Register/Register";
 import RoadMap from "./pages/RoadMap/RoadMap";
+import AddUserForCoures from "./pages/AddUserForCoures/AddUserForCoures";
 
 function ProtectedRoute() {
   const isAuthenticated = window.localStorage.getItem("user");
-  // const { isAuthenticated } = useSelector((state) => state.user);
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 }
 
 function RejectRoute() {
   const isAuthenticated = window.localStorage.getItem("user");
-  // const { isAuthenticated } = useSelector((state) => state.user);
   return !isAuthenticated ? <Outlet /> : <Navigate to="/" />;
 }
 
@@ -98,6 +97,14 @@ export default function useRouteElement() {
               element: (
                 <LayoutAdmin>
                   <CourseAdmin />
+                </LayoutAdmin>
+              ),
+            },
+            {
+              path: "/course/:id",
+              element: (
+                <LayoutAdmin>
+                 <AddUserForCoures/>
                 </LayoutAdmin>
               ),
             },
