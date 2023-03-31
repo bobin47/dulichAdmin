@@ -8,6 +8,7 @@ import {
 } from "../../store/features/CourseSlice/CourseSlice";
 import { Space, Table } from "antd";
 import { ToastContainer, toast } from "react-toastify";
+import { size } from "@floating-ui/react-dom";
 
 
 export default function AddUserForCoures() {
@@ -47,17 +48,17 @@ export default function AddUserForCoures() {
 
   const columns = [
     {
-      title: "taiKhoan",
+      title: "Tài khoản",
       dataIndex: "taiKhoan",
       key: "taiKhoan",
     },
     {
-      title: "hoTen",
+      title: "Họ tên",
       dataIndex: "hoTen",
       key: "hoTen",
     },
     {
-      title: "biDanh",
+      title: "Bí danh",
       dataIndex: "biDanh",
       key: "biDanh",
     },
@@ -65,12 +66,12 @@ export default function AddUserForCoures() {
 
   const column = [
     {
-      title: "taiKhoan",
+      title: "Tài Khoản",
       dataIndex: "taiKhoan",
       key: "taiKhoan",
     },
     {
-      title: "hoTen",
+      title: "Họ Tên",
       dataIndex: "hoTen",
       key: "hoTen",
     },
@@ -123,16 +124,24 @@ export default function AddUserForCoures() {
   return (
     <div className="grid grid-cols-12 gap-5">
       <div className=" col-span-6">
-        <div className="text-black font-bold text-3xl mb-3">
-          Danh Sach cho xet duyet 
+        <div className="text-black font-bold text-3xl mb-5">
+          Danh Sách Chờ Xét Duyệt
         </div>
-        <Table dataSource={dataSource} columns={column} pagination={false} />
+        <Table
+          dataSource={dataSource}
+          columns={column}
+          pagination={{ pageSize: 5, total: listUserNotAccept.length }}
+        />
       </div>
       <div className=" col-span-6">
-        <div className="text-black font-bold text-3xl mb-3">
-          Danh Sach da xet duyet 
+        <div className="text-black font-bold text-3xl mb-5">
+          Danh Sách Chờ đã Xét Duyệt
         </div>
-        <Table dataSource={dataSources} columns={columns} pagination={false} />
+        <Table
+          dataSource={dataSources}
+          columns={columns}
+          pagination={{ pageSize: 5, total: listUserAccept.length }}
+        />
       </div>
     </div>
   );

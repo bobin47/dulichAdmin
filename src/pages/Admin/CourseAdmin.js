@@ -89,7 +89,7 @@ export default function CourseAdmin() {
 
   const columns = [
     {
-      title: "Ten khoa hoc",
+      title: "Tên khoá học",
       dataIndex: "tenKhoaHoc",
       key: "tenKhoaHoc",
       filteredValue: [filter],
@@ -102,23 +102,23 @@ export default function CourseAdmin() {
       },
     },
     {
-      title: "ma khoa hoc",
+      title: "Mã khoá học",
       dataIndex: "maKhoaHoc",
       key: "maKhoaHoc",
       render: (text) => <NavLink to={`${text}`}>{text}</NavLink>,
     },
     {
-      title: "luot xem",
+      title: "Lượt xem",
       dataIndex: "luotXem",
       key: "luotXem",
     },
     {
-      title: "hoc vien",
+      title: "Học viên",
       dataIndex: "soLuongHocVien",
       key: "soLuongHocVien",
     },
     {
-      title: "hinh anh",
+      title: "Hình ảnh",
       dataIndex: "hinhAnh",
       key: "hinhAnh",
       render: (data, record) => {
@@ -126,12 +126,12 @@ export default function CourseAdmin() {
       },
     },
     {
-      title: "Mo ta",
+      title: "Mô tả",
       dataIndex: "moTa",
       key: "moTa",
     },
     {
-      title: "Ngay tao",
+      title: "Ngày tạo",
       dataIndex: "ngayTao",
       key: "ngayTao",
     },
@@ -160,14 +160,14 @@ export default function CourseAdmin() {
 
   return (
     <div>
-      <div className="text-black font-bold text-3xl mb-3">Quản lý Khoa hoc</div>
+      <div className="text-black font-bold text-3xl mb-3">Quản lý khoá học</div>
       <div className="w-[50%] flex items-center gap-3">
         <AddCourse />
         <Input.Search onChange={(e)=>{
           setFilter(e.target.value)
         }}/>
       </div>
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={data} pagination={{pageSize:5}}/>
       <Drawer
         title="Basic Drawer"
         placement="right"

@@ -57,7 +57,7 @@ export default function AddCourse() {
 
   return (
     <div className="my-3">
-      <Button onClick={showDrawer}> Them khoa hoc</Button>
+      <Button onClick={showDrawer}>Thêm Khoá Học</Button>
       <Drawer
         onClose={onClose}
         open={open}

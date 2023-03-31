@@ -165,7 +165,7 @@ export default function UserAdmin() {
         loading={isLoading}
         columns={columns}
         dataSource={allUser}
-        pagination={{ position: ["bottomCenter"] }}
+        pagination={{ position: ["bottomCenter"] ,pageSize:5}}
       />
 
       <Drawer
