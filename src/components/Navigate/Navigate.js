@@ -15,11 +15,11 @@ export default function Navigate() {
   };
 
   return (
-    <div className="flex flex-col gap-3 p-3">
+    <div className="flex flex-col gap-3 p-3 sticky top-[76px] right-0">
       <NavLink
         to="/"
         className={classNames(
-          "flex flex-col items-center py-3  rounded-3xl hover:bg-gray-200"
+          "flex flex-col items-center py-3  rounded-3xl hover:bg-gray-200 "
         )}
         style={({ isActive }) => {
           return isActive ? activeStyle : null;
