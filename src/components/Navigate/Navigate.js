@@ -15,52 +15,52 @@ export default function Navigate() {
   };
 
   return (
-    <div className="flex flex-col gap-3 p-3 sticky top-[76px] right-0">
+    <div className="flex flex-col gap-3 p-5 sticky top-[76px] right-0">
       <NavLink
         to="/"
         className={classNames(
-          "flex flex-col items-center py-3  rounded-3xl hover:bg-gray-200 "
+          "flex flex-col items-center py-4 text-[12px] rounded-3xl hover:bg-gray-200 font-bold "
         )}
         style={({ isActive }) => {
           return isActive ? activeStyle : null;
         }}
       >
-        <HomeFilled className="text-2xl" />
+        <HomeFilled className=" text-[17px] mb-[6px]" />
         Home
       </NavLink>
       <NavLink
         to="/lotrinh"
         className={classNames(
-          "flex flex-col items-center p-3 rounded-3xl hover:bg-gray-200"
+          "flex flex-col items-center py-4 text-[12px] rounded-3xl hover:bg-gray-200 font-bold "
         )}
         style={({ isActive }) => {
           return isActive ? activeStyle : null;
         }}
       >
-        <IdcardFilled className="text-2xl" />
-        Lo trinh
+        <IdcardFilled className="text-[17px] mb-[6px]" />
+        Lộ trình
       </NavLink>
       <NavLink
         to="/learn"
         className={classNames(
-          "flex flex-col items-center p-3 rounded-3xl hover:bg-gray-200"
+          "flex flex-col items-center py-4 text-[12px] rounded-3xl hover:bg-gray-200 font-bold "
         )}
         style={({ isActive }) => (isActive ? activeStyle : null)}
       >
-        <BookFilled className="text-2xl" />
-        Hoc
+        <BookFilled className="text-[17px] mb-[6px]" />
+        Học
       </NavLink>
 
       {user ? (
         <NavLink
           to="/profile"
           className={classNames(
-            "flex flex-col items-center p-3 rounded-3xl hover:bg-gray-200"
+            "flex flex-col items-center py-4 text-[12px] rounded-3xl hover:bg-gray-200 font-bold "
           )}
           style={({ isActive }) => (isActive ? activeStyle : null)}
         >
-          <SwitcherFilled className="text-2xl" />
-          Profile
+          <SwitcherFilled className="text-[17px] mb-[6px]" />
+          Cá nhân
         </NavLink>
       ) : null}
     </div>

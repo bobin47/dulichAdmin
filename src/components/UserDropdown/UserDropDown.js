@@ -34,12 +34,9 @@ export default function UserDropDown() {
   };
 
   return (
-    // <div className="flex items-center p-2 bg-orange-600 text-white rounded-2xl cursor-pointer">
-    //
-    // </div>
     <>
       <div
-        className="flex items-center p-2 bg-orange-600 text-white rounded-2xl cursor-pointer"
+        className="flex items-center px-5 py-2 font-bold text-sm bg-orange-600 text-white  rounded-3xl cursor-pointer"
         ref={refs.setReference}
         {...getReferenceProps()}
       >
@@ -58,13 +55,13 @@ export default function UserDropDown() {
           className="p-3 bg-white z-30 text-gray-500 flex flex-col capitalize shadow-2xl border-solid border-2 border-gray-100 rounded-md "
         >
           <Link to="/profile" className="text-lg p-1 hover:text-gray-700">
-            profile
+            Cá Nhân
           </Link>
           <Link
             onClick={handleLogout}
             className="text-xg p-1 hover:text-gray-700"
           >
-            Logout
+            Đăng Xuất
           </Link>
         </div>
       )}

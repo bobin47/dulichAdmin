@@ -15,7 +15,7 @@ export default function CategoryCourse() {
   }, []);
 
   return (
-    <div>
+    <div className="mt-[70px]">
       {categoryCourse.map((category, index) => {
         return (
           <div className="mb-10" key={index}>

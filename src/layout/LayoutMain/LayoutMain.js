@@ -8,7 +8,7 @@ export default function LayoutMain({ children }) {
     <>
       <Header />
       <div className="grid grid-cols-12">
-        <div className="col-span-1 ">
+        <div className="col-span-1">
           <Navigate />
         </div>
         <div className="col-span-11">{children}</div>

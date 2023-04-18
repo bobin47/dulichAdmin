@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="bg-gray-800">
+    <div className="bg-[#181821]">
       <div className="flex justify-between items-start w-[70%] p-20 mx-auto">
         <div className=" text-gray-400 font-bold">
           <h3 className="text-white mb-5">LIÊN HỆ</h3>

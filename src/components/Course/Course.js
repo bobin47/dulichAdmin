@@ -26,7 +26,7 @@ export default function Course({ category }) {
             >
               <div>
                 <img
-                  className="w-full h-[200px] rounded-3xl border"
+                  className="w-[281px] h-[150px] rounded-3xl border"
                   src={course.hinhAnh}
                   alt="hinh"
                 />

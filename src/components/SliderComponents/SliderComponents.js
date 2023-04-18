@@ -14,7 +14,7 @@ export default class SimpleSlider extends Component {
       autoplay: true,
     };
     return (
-      <div className="mt-5">
+      <div className="mt-5 ">
         <div className="w-[90%] mx-auto mb-7 ">
           <Slider {...settings} autoplay={true}>
             <div>
