@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import { schemaRegister } from "../../utils/rules";
 import Input from "../../components/Input/Input";
-import { useDispatch } from "react-redux";
-
+import { useDispatch,useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
 import { registerAccount } from "../../store/features/auth/authSlice";
 
 export default function Register() {
+  const {messError} = useSelector((state) => state.auth);
   const {
     register,
     handleSubmit,
@@ -19,6 +19,10 @@ export default function Register() {
   });
   const dispatch = useDispatch();
 
+  useEffect(()=>{
+    
+  },[])
+
   const handleRegister = handleSubmit(
     (data) => {
       console.log(data);
@@ -26,6 +30,7 @@ export default function Register() {
     },
     (data) => {
       console.log(data);
+      toast.error(messError);
     }
   );
 
@@ -100,7 +105,7 @@ export default function Register() {
               Đăng ký
             </button>
           </div>
-
+          
           <div className="mt-6 text-gray-500">
             Bạn đã có tài khoản?{" "}
             <span>

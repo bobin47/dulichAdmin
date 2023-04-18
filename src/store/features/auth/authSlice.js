@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { registerApi, loginApi } from "../../../api/auth";
+import { ToastContainer, toast } from "react-toastify";
 
 // First, create the thunk
 export const registerAccount = createAsyncThunk(
@@ -33,13 +34,22 @@ const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(registerAccount.fulfilled, (state, action) => {});
-    builder.addCase(registerAccount.rejected, (state, action) => {});
+    builder.addCase(registerAccount.fulfilled, (state, action) => {
+      console.log(action)
+    });
+    builder.addCase(registerAccount.rejected, (state, action) => {
+      console.log(action)
+    if (action) {
+      toast.error("Đăng ký thất bại")
+    }
+    });
     builder.addCase(registerAccount.pending, (state, action) => {});
+
     builder.addCase(loginAccount.fulfilled, (state, action) => {
       const { payload } = action;
       console.log("payload", payload);
       localStorage.setItem("user", JSON.stringify(payload));
+      toast.success("Đăng nhập thành công")
       return {
         ...state,
         isAuthenticated: true,
