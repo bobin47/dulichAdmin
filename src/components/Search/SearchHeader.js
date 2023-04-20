@@ -70,7 +70,7 @@ export default function SearchHeader() {
           {...getFloatingProps()}
         >
          <div className="p-4">
-         {valueSearch ? <h1 className="text-[20px]">Khoá Học</h1>:<h1 className="text-[20px]">Tim Kiem</h1>}
+         {valueSearch ? <h1 className="text-[20px]">Khoá Học</h1>:<h1 className="text-[20px]">Tìm Kiếm</h1>}
           {courseResearch && courseResearch.map((course)=>{
             return <NavLink key={course.maKhoaHoc} className="flex items-center gap-2 cursor-pointer mt-3" to={`/detail/${course.maKhoaHoc}`}>
             <img src={course.hinhAnh} 
