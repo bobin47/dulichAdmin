@@ -1,7 +1,11 @@
 import { http } from "./http";
 
 export const AllCourseApi = () => {
-  return http.get("/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP09");
+  return http.get(`/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP09`);
+};
+
+export const SearchCourseApi = (value) => {
+  return http.get(`/QuanLyKhoaHoc/LayDanhSachKhoaHoc?tenKhoaHoc=${value}&MaNhom=GP09`);
 };
 
 export const CategoryCourse = () => {

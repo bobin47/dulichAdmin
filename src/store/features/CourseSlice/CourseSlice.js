@@ -13,7 +13,8 @@ import {
   listUserNotAccept,
   listUserAccept,
   GhiDanh,
-  HuyGhiDanh
+  HuyGhiDanh,
+  SearchCourseApi
 } from "../../../api/course";
 
 const initialState = {
@@ -23,7 +24,8 @@ const initialState = {
   detail: [],
   listUserNotAccept: [],
   listUserAccept: [],
-  mess:null
+  mess:null,
+  courseResearch:[],
 };
 
 // First, create the thunk
@@ -129,11 +131,28 @@ export const huyGhiDanhAction = createAsyncThunk(
   }
 );
 
+export const searchCourseAction = createAsyncThunk(
+  "course/searchCourseAction",
+  async (data, thunkAPI) => {
+    const response = await SearchCourseApi(data);
+    console.log(response)
+    return response.data;
+  }
+);
+
 const courseSlice = createSlice({
   name: "courses",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+
+    builder.addCase(searchCourseAction.fulfilled, (state, action) => {
+      state.courseResearch = action.payload
+    });
+    builder.addCase(searchCourseAction.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(searchCourseAction.rejected, (state, action) => {});
 
     builder.addCase(ghiDanhAction.fulfilled, (state, action) => {
       state.mess = action.payload
