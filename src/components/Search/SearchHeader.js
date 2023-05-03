@@ -14,6 +14,7 @@ export default function SearchHeader() {
     const dispatch = useDispatch()
     const [isOpen, setIsOpen] = useState(false);
     const {courseResearch} = useSelector(state=>state.course)
+    const [maKhoahoc,setMaKhoahoc] = useState('')
 
 
     const {x, y, strategy, refs, context} = useFloating({

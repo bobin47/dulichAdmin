@@ -167,7 +167,7 @@ export default function CourseAdmin() {
           setFilter(e.target.value)
         }}/>
       </div>
-      <Table columns={columns} dataSource={data} pagination={{pageSize:5}}/>
+      <Table columns={columns} dataSource={data}/>
       <Drawer
         title="Basic Drawer"
         placement="right"
