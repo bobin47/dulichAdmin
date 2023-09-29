@@ -10,8 +10,8 @@ function App() {
     const routeElement = useRouteElement();
     return ( <
         div >
-        1 { routeElement } <
-        ToastContainer / >
+
+        { routeElement } < ToastContainer / >
         <
         /div>
     );
