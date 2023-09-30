@@ -1,9 +1,27 @@
 import { Button, Form, Input } from "antd";
+import { createTour, editTour } from "../../../../store/features/tour/tourSlice";
 
 export default function FormTour({ category, dispatch, form, action }) {
   const onFinish = (values) => {
-    console.log(values);
+   console.log(values)
+    if(action){
+        dispatch(createTour(values))
+    }else{
+        const data = {
+            id:values._id,
+            body:{
+                brief: values.brief,
+                content: values.content,
+                description: values.description,
+                price: values.price,
+                title: values.title
+            }
+        }
+        dispatch(editTour(data))
+    }
+    
   };
+
   return (
     <div>
       <Form
@@ -37,9 +55,10 @@ export default function FormTour({ category, dispatch, form, action }) {
           <Input />
         </Form.Item>
 
-        {/* <Form.Item name="content" label="content">
-          <CustomCKEditor />
-        </Form.Item> */}
+        <Form.Item name="content" label="content">
+          {/* <CustomCKEditor /> */}
+          <Input />
+        </Form.Item>
         <Form.Item
           wrapperCol={{ span: 8 }}
           style={{ display: "flex", justifyContent: "end" }}

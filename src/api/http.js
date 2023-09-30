@@ -1,6 +1,6 @@
 import axios from "axios";
 import { message } from "antd";
-import { setAccessTokenFormLC, setUserFormLC } from "../utils/utils";
+import { getAccessTokenFormLC, setAccessTokenFormLC, setUserFormLC } from "../utils/utils";
 const url = "https://elearning0706.cybersoft.edu.vn/api";
 const urlDulich = "http://localhost:4000/";
 
@@ -14,11 +14,12 @@ class Http {
     this.https.interceptors.request.use(
       function(config) {
         const data = JSON.parse(localStorage.getItem("user"));
+        const token = getAccessTokenFormLC()
         config.headers = {
           ...config.headers,
           accept: "application/json",
           Authorization: `${
-            localStorage.getItem("user") ? "Bearer " + data.accessToken : ""
+            localStorage.getItem("user") ? "Bearer " + token : ""
           }`,
         };
         return config;
@@ -43,6 +44,20 @@ class Http {
           setUserFormLC(user);
          
         }
+         if (url === "tour/newtour") {
+          message.success("Tao tour Oke");
+        }
+        if(url.includes("deletetour")){
+          message.success("Xoa Oke");
+
+        }
+
+        if(url.includes("updateTour")){
+          message.success("Cap nhat Oke");
+
+        }
+
+
         return response;
       },
       function(error) {

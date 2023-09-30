@@ -5,7 +5,13 @@ export const apiCategory = {
     console.log(params)
     return http.get("tour/getPaginationTour", { params });
   },
-  createTour:(body)=>{},
-  deleteTour:(id)=>{},
-  updateTour:()=>{},
+  createTour:(body)=>{
+    return http.post("tour/newtour",body)
+  },
+  deleteTour:(id)=>{
+    return http.delete(`tour/deletetour/${id}`)
+  },
+  updateTour:(id, body)=>{
+    return http.put(`tour/updateTour/${id}`,body)
+  },
 };

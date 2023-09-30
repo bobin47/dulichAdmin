@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const getAllTour = createAsyncThunk(
-  "Post/getAll",
+  "post/getAll",
   async (data, thunk) => {
     const response = await apiCategory.getAllTour(data);
     return response;
@@ -28,6 +28,67 @@ const getAllTourBuilder = (
   builder.addCase(getAllTour.rejected, (state, action) => {});
 };
 
+export const createTour = createAsyncThunk(
+  "post/createTour",
+  async (data, thunk) => {
+    const response = await apiCategory.createTour(data);
+    return response;
+  }
+);
+
+const createTourBuilder = (
+  builder
+) => {
+  builder.addCase(createTour.fulfilled, (state, action) => {
+    console.log(action.payload);
+   
+   
+  });
+  builder.addCase(createTour.pending, (state, action) => {});
+  builder.addCase(createTour.rejected, (state, action) => {});
+};
+
+export const editTour = createAsyncThunk(
+  "post/editTour",
+  async (data: any, thunk) => {
+    const response = await apiCategory.updateTour(data.id, data.body);
+    return response;
+  }
+);
+
+const editTourBuilder = (
+  builder
+) => {
+  builder.addCase(editTour.fulfilled, (state, action) => {
+    console.log(action.payload);
+   
+   
+  });
+  builder.addCase(editTour.pending, (state, action) => {});
+  builder.addCase(editTour.rejected, (state, action) => {});
+};
+
+export const deleteTour = createAsyncThunk(
+  "post/deleteTour",
+  async (data, thunk) => {
+    console.log(data)
+    const response = await apiCategory.deleteTour(data);
+    return response;
+  }
+);
+
+const deleteTourBuilder = (
+  builder
+) => {
+  builder.addCase(deleteTour.fulfilled, (state, action) => {
+    console.log(action.payload);
+  });
+  builder.addCase(deleteTour.pending, (state, action) => {});
+  builder.addCase(deleteTour.rejected, (state, action) => {});
+};
+
+
+
 
 
 const tourSlice = createSlice({
@@ -36,6 +97,9 @@ const tourSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     getAllTourBuilder(builder)
+    createTourBuilder(builder)
+    editTourBuilder(builder)
+    deleteTourBuilder(builder)
   },
 });
 

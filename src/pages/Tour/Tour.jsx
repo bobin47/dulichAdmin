@@ -5,7 +5,7 @@ import Filter from '../../components/Filter/Filter';
 import TableComponent from '../../components/TableComponent/TableComponent';
 import DrawerComponent from '../../components/DrawerComponent/DrawerComponent';
 import "./index.css"
-import { getAllTour } from '../../store/features/tour/tourSlice';
+import { deleteTour, getAllTour } from '../../store/features/tour/tourSlice';
 import FormTour from './components/FormTour/FormTour';
 
 export default function Tour() {
@@ -93,8 +93,7 @@ export default function Tour() {
     modal.confirm({
       title: "Do you want delete",
       onOk: () => {
-        //  dispatch(deleteCompany(id));
-        message.success("success");
+         dispatch(deleteTour(_id));
       },
       onCancel: () => {},
     });
