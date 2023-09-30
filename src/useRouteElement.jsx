@@ -39,10 +39,8 @@ export default function useRouteElement() {
               children:[
                 {path:"tour",element:<Tour/>},
                 {path:"dashboard",element:<Dashboard/>}
-
               ]
             },
-
           ],
         },
       ],

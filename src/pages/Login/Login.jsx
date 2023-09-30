@@ -33,6 +33,12 @@ export default function SignIn() {
     dispatch(loginAccount(values));
   };
 
+  useEffect(()=>{
+    if(isAuthenticated){
+      navigate("/admin/tour")
+    }
+  },[isAuthenticated])
+
   const onFinishFailed = () => {};
 
   return (
