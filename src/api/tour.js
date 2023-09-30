@@ -5,4 +5,7 @@ export const apiCategory = {
     console.log(params)
     return http.get("tour/getPaginationTour", { params });
   },
+  createTour:(body)=>{},
+  deleteTour:(id)=>{},
+  updateTour:()=>{},
 };
