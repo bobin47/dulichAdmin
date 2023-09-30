@@ -5,5 +5,5 @@ export const registerApi = (body) => {
 };
 
 export const loginApi = (body) => {
-  return http.post("/QuanLyNguoiDung/DangNhap", body);
+  return http.post("/user/login", body);
 };

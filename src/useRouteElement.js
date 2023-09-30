@@ -28,7 +28,7 @@ function RejectRoute() {
 
 function IsAdmin() {
   const data = JSON.parse(localStorage.getItem("user"));
-  return data.maLoaiNguoiDung === "GV" ? <Outlet /> : <Navigate to="/" />;
+  return data ? <Outlet /> : <Navigate to="/" />;
 }
 
 export default function useRouteElement() {
@@ -104,7 +104,7 @@ export default function useRouteElement() {
               path: "/course/:id",
               element: (
                 <LayoutAdmin>
-                 <AddUserForCoures/>
+                  <AddUserForCoures />
                 </LayoutAdmin>
               ),
             },
@@ -144,7 +144,7 @@ export default function useRouteElement() {
           path: "/login",
           element: (
             <Layout>
-              <Login />,
+              <Login /> ,{" "}
             </Layout>
           ),
         },

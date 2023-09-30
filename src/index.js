@@ -6,15 +6,16 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
-// import "./assets/styles/main.css";
-// import "./assets/styles/responsive.css";
+import { App as AppAntd } from "antd";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <AppAntd>
+          <App />
+        </AppAntd>{" "}
       </Provider>{" "}
     </BrowserRouter>{" "}
   </React.StrictMode>

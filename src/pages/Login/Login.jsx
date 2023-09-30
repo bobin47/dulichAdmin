@@ -1,5 +1,16 @@
-import { Link } from "react-router-dom";
-import { Layout, Menu, Button, Row, Col, Typography, Form, Input } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  Layout,
+  Menu,
+  Button,
+  Row,
+  Col,
+  Typography,
+  Form,
+  Input,
+  App,
+  Space,
+} from "antd";
 import signinbg from "../../assets/images/img-signin.jpg";
 import {
   DribbbleOutlined,
@@ -7,13 +18,19 @@ import {
   InstagramOutlined,
   GithubOutlined,
 } from "@ant-design/icons";
-
+import { useDispatch, useSelector } from "react-redux";
+import { loginAccount } from "../../store/features/auth/authSlice";
+import { useEffect } from "react";
 const { Title } = Typography;
 const { Footer, Content } = Layout;
 
 export default function SignIn() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const onFinish = (values) => {
     console.log("Success:", values);
+    dispatch(loginAccount(values));
   };
 
   const onFinishFailed = () => {};
