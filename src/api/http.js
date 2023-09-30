@@ -42,7 +42,7 @@ class Http {
           setAccessTokenFormLC(token);
           setUserFormLC(user);
           setTimeout(() => {
-            document.location.assign("/");
+            document.location.assign("/admin/tour");
           }, 2000);
         }
         return response;
