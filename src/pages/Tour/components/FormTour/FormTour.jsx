@@ -1,5 +1,6 @@
 import { Button, Form, Input } from "antd";
 import { createTour, editTour } from "../../../../store/features/tour/tourSlice";
+import CkeditorTour from "../Ckeditor/CkeditorTour";
 
 export default function FormTour({ category, dispatch, form, action }) {
   const onFinish = (values) => {
@@ -57,7 +58,7 @@ export default function FormTour({ category, dispatch, form, action }) {
 
         <Form.Item name="content" label="content">
           {/* <CustomCKEditor /> */}
-          <Input />
+          <CkeditorTour />
         </Form.Item>
         <Form.Item
           wrapperCol={{ span: 8 }}
