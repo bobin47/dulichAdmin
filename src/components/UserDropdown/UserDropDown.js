@@ -30,7 +30,7 @@ export default function UserDropDown() {
 
   const handleLogout = () => {
     window.localStorage.removeItem("user");
-    dispatch(logout());
+    // document.location.assign("/login")
   };
 
   return (

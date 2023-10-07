@@ -54,11 +54,7 @@ export default function Tour() {
       dataIndex: "brief",
       key: "brief ",
     },
-    {
-      title: "Content",
-      dataIndex: "content",
-      key: "content ",
-    },
+  
     
     {
       title: "Action",

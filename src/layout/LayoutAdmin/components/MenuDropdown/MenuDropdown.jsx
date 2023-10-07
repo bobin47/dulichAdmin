@@ -9,6 +9,7 @@ export default function MenuDropdown() {
       label: "Logout",
       key: "3",
       onClick: () => {
+        document.location.assign("/login")
         clearLC()
       },
     },
