@@ -5,19 +5,20 @@ export default function Filter({
   onRefresh,
   showDrawer,
   selectItem,
+  hide
 }) {
   
   return (
     <>
       <div className="search">
-        <Search
+       {hide ? <Search
           placeholder="Search user"
           allowClear
           enterButton="Search"
           size="large"
           style={{ width: 400 }}
           onSearch={onSearch}
-        />
+        />:<div></div>}
       </div>
       <div className="action">
         <Space>{selectItem}</Space>

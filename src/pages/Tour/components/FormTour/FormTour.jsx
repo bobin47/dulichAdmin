@@ -67,6 +67,9 @@ export default function FormTour({ category, dispatch, form, action }) {
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
+          <div>
+          
+          </div>
         </Form.Item>
       </Form>
     </div>

@@ -22,7 +22,7 @@ export default function Tour() {
       title: "Id",
       dataIndex: "_id",
       key: "_id",
-      render: (text) => <a>{text}</a>,
+      render: (text, record, index) => <a>{index + 1}</a>,
       fixed: "left",
       width: 150,
     },
@@ -31,7 +31,7 @@ export default function Tour() {
       dataIndex: "title",
       key: "title",
       fixed: "left",
-      width: 150,
+      width: 350,
       ellipsis: true,
       render: (title) => (
         <Tooltip placement="topLeft" title={title}>
@@ -43,19 +43,13 @@ export default function Tour() {
       title: "Description",
       dataIndex: "description",
       key: "description",
+      width: 150,
     },
     {
       title: "Price",
       dataIndex: "price",
       key: "price",
     },
-    {
-      title: "Brief",
-      dataIndex: "brief",
-      key: "brief ",
-    },
-  
-    
     {
       title: "Action",
       key: "action",
@@ -95,8 +89,6 @@ export default function Tour() {
     });
   };
 
-
-
   const onRefresh = () => {
     const param = { limit, page };
     dispatch(getAllTour(param))
@@ -106,14 +98,18 @@ export default function Tour() {
     console.log(record)
     const isCheck = record._id === undefined;
     setAction(isCheck);
-    form.setFieldsValue({
-      _id: record._id,
-      title: record.title,
-      price: record.price,
-      brief: record.brief,
-      description: record.description,
-      content: record.content,
-    });
+    console.log(isCheck)
+    if (!isCheck){
+      form.setFieldsValue({
+        _id: record._id,
+        title: record.title,
+        price: record.price,
+        brief: record.brief,
+        description: record.description,
+        content: record.content,
+      });
+    }
+   
     setOpen(true);
   };
 
@@ -131,13 +127,14 @@ export default function Tour() {
      <div className="container">
       <div className="filter">
         <Filter
+          hide={false}
           onSearch={onSearch}
           onRefresh={onRefresh}
           showDrawer={showDrawer}
         />
       </div>
       <TableComponent
-        x={1500}
+        // x={1500}
         columns={columns}
         dataSource={tours}
         page={page}
@@ -150,8 +147,9 @@ export default function Tour() {
         width={1400}
         onClose={onClose}
         open={open}
+        name={`Tour ${action ? "Create" : "Edit"}`}
         FormComponent={
-          <FormTour action={action} dispatch={dispatch} form={form}/>
+          <FormTour  action={action} dispatch={dispatch} form={form}/>
         }
       />
     </div>

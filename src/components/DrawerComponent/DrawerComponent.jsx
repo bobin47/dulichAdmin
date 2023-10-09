@@ -4,10 +4,11 @@ export default function DrawerComponent({
   open,
   FormComponent,
   width,
+  name
 }) {
   return (
     <Drawer
-      title="Basic Drawer"
+      title={`${name} Drawer`}
       placement="right"
       onClose={onClose}
       open={open}

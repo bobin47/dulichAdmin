@@ -53,7 +53,7 @@ export default function SignIn() {
             >
               <Title className="mb-15">Sign In</Title>
               <Title className="font-regular text-muted" level={5}>
-                Enter your email and password to sign in
+                Enter your User Name and password to sign in
               </Title>
               <Form
                 onFinish={onFinish}
@@ -63,7 +63,7 @@ export default function SignIn() {
               >
                 <Form.Item
                   className="username"
-                  label="Email"
+                  label="User Name"
                   name="userName"
                   rules={[
                     {
@@ -72,7 +72,7 @@ export default function SignIn() {
                     },
                   ]}
                 >
-                  <Input placeholder="Email" />
+                  <Input placeholder="User Name" />
                 </Form.Item>
 
                 <Form.Item
@@ -98,11 +98,6 @@ export default function SignIn() {
                     SIGN IN
                   </Button>
                 </Form.Item>
-                <p className="font-semibold text-muted">
-                  <Link to="/register" className="text-dark font-bold">
-                    Sign Up
-                  </Link>
-                </p>
               </Form>
             </Col>
             <Col

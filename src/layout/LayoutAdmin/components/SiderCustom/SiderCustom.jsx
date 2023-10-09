@@ -1,6 +1,8 @@
 import {
   UserOutlined,
   FundProjectionScreenOutlined,
+  BankOutlined,
+  ProjectOutlined,
 } from "@ant-design/icons";
 import { Menu, MenuProps } from "antd";
 import { Link, NavLink, useLocation } from "react-router-dom";
@@ -28,26 +30,26 @@ export default function SiderCustom() {
       ),
       label: "Tour",
     },
-    // {
-    //   key: "company",
+    {
+      key: "company",
 
-    //   icon: (
-    //     <NavLink to={path.company}>
-    //       <BankOutlined />
-    //     </NavLink>
-    //   ),
-    //   label: "Company",
-    // },
+      icon: (
+        <NavLink to={""}>
+          <BankOutlined />
+        </NavLink>
+      ),
+      label: "Data Header",
+    },
 
-    // {
-    //   key: "job",
-    //   icon: (
-    //     <NavLink to={path.job}>
-    //       <ProjectOutlined />
-    //     </NavLink>
-    //   ),
-    //   label: "Job",
-    // },
+    {
+      key: "job",
+      icon: (
+        <NavLink to={""}>
+          <ProjectOutlined />
+        </NavLink>
+      ),
+      label: "Data Footer",
+    },
 
     // {
     //   key: "post",
