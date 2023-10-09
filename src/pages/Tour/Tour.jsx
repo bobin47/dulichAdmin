@@ -98,7 +98,6 @@ export default function Tour() {
     console.log(record)
     const isCheck = record._id === undefined;
     setAction(isCheck);
-    console.log(isCheck)
     if (!isCheck){
       form.setFieldsValue({
         _id: record._id,
@@ -107,6 +106,15 @@ export default function Tour() {
         brief: record.brief,
         description: record.description,
         content: record.content,
+      });
+    }
+    if (isCheck){
+      form.setFieldsValue({
+        title:"",
+        price: "",
+        brief: "",
+        description: "",
+        content: "",
       });
     }
    

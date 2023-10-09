@@ -18,6 +18,7 @@ export default function FormTour({ category, dispatch, form, action }) {
                 title: values.title
             }
         }
+        console.log(data)
         dispatch(editTour(data))
     }
     
