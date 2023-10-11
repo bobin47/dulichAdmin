@@ -15,9 +15,9 @@ root.render(
       <Provider store={store}>
         <AppAntd>
           <App />
-        </AppAntd>{" "}
-      </Provider>{" "}
-    </BrowserRouter>{" "}
+        </AppAntd>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

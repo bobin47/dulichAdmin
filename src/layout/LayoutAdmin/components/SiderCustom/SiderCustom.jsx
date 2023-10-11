@@ -31,10 +31,10 @@ export default function SiderCustom() {
       label: "Tour",
     },
     {
-      key: "company",
+      key: "dataHeader",
 
       icon: (
-        <NavLink to={""}>
+        <NavLink to={"dataHeader"}>
           <BankOutlined />
         </NavLink>
       ),
@@ -42,9 +42,9 @@ export default function SiderCustom() {
     },
 
     {
-      key: "job",
+      key: "dataFooter",
       icon: (
-        <NavLink to={""}>
+        <NavLink to={"dataFooter"}>
           <ProjectOutlined />
         </NavLink>
       ),

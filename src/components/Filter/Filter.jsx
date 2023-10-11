@@ -5,7 +5,8 @@ export default function Filter({
   onRefresh,
   showDrawer,
   selectItem,
-  hide
+  hide,
+  onCreate = true
 }) {
   
   return (
@@ -22,9 +23,9 @@ export default function Filter({
       </div>
       <div className="action">
         <Space>{selectItem}</Space>
-        <Button className="create" type="primary" onClick={showDrawer}>
+        {onCreate ? <Button className="create" type="primary" onClick={showDrawer}>
           Create
-        </Button>
+        </Button> : <div></div>}
         <Button onClick={onRefresh} className="refresh" type="primary">
           Refresh
         </Button>

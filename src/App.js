@@ -9,7 +9,6 @@ function App() {
   const routeElement = useRouteElement();
   return (
     <div>
-      {" "}
       {routeElement} <ToastContainer />
     </div>
   );

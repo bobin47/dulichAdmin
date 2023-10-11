@@ -8,7 +8,7 @@ export default function DrawerComponent({
 }) {
   return (
     <Drawer
-      title={`${name} Drawer`}
+      title={name}
       placement="right"
       onClose={onClose}
       open={open}

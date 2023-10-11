@@ -5,6 +5,8 @@ import Admin from "./pages/Admin/Admin";
 import Login from "./pages/Login/Login";
 import Tour from "./pages/Tour/Tour";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import DataFooter from "./pages/DataFooter/DataFooter";
+import DataHeader from "./pages/DataHeader/DataHeader";
 
 function ProtectedRoute() {
   const isAuthenticated = window.localStorage.getItem("user");
@@ -37,8 +39,10 @@ export default function useRouteElement() {
                   <Admin />
               ),
               children:[
-                {path:"tour",element:<Tour/>},
-                {path:"dashboard",element:<Dashboard/>}
+                {path:"tour", element:<Tour/>},
+                {path:"dashboard", element:<Dashboard/>},
+                { path: "dataFooter", element: <DataFooter /> },
+                { path: "dataHeader", element: <DataHeader /> }
               ]
             },
           ],

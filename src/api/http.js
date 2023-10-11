@@ -33,7 +33,7 @@ class Http {
     this.https.interceptors.response.use(
       function(response) {
         const { url } = response.config;
-        console.log(response.config);
+        console.log(url)
         if (url === "/user/login") {
           message.success("Login ok");
           const data = response.data;
@@ -54,7 +54,10 @@ class Http {
 
         if(url.includes("updateTour")){
           message.success("Cap nhat Oke");
+        }
 
+        if (url.includes("datafooter/changefooter")){
+          message.success("Cap nhat Oke");
         }
 
 
