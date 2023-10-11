@@ -60,6 +60,10 @@ class Http {
           message.success("Cap nhat Oke");
         }
 
+        if (url.includes("sliderheader/changesliderheader")) {
+          message.success("Cap nhat Oke");
+        }
+
 
         return response;
       },

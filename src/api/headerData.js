@@ -11,6 +11,6 @@ export const apiHeaderData = {
     //     return http.delete(`tour/deletetour/${id}`)
     // },
     updateHeaderData: (body) => {
-        return http.put(`sliderheader/changesliderheader`, body)
+        return http.post(`sliderheader/changesliderheader`, body)
     },
 };

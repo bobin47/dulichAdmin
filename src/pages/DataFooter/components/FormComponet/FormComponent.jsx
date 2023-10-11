@@ -20,7 +20,7 @@ export default function FormComponent({ action, form, dispatch }) {
         form={form}
         onFinish={onFinish}
         name="basic"
-        labelCol={{ span: 8 }}
+        labelCol={{ span: 10 }}
         wrapperCol={{ span: 24 }}
         initialValues={{ remember: true }}
         autoComplete="off"
@@ -30,32 +30,32 @@ export default function FormComponent({ action, form, dispatch }) {
             <Input disabled />
           </Form.Item>
         )} */}
-        <Form.Item name="title" label="title" wrapperCol={{ span: 12 }}>
+        <Form.Item name="title" label="Title" wrapperCol={{ span: 16 }}>
           <Input />
         </Form.Item>
-        <Form.Item name="phoneNumber" label="phoneNumber" wrapperCol={{ span: 12 }}>
+        <Form.Item name="phoneNumber" label="Phone Number" wrapperCol={{ span: 16 }}>
           <Input />
         </Form.Item>
-        <Form.Item name="email" label="email" wrapperCol={{ span: 12 }}>
+        <Form.Item name="email" label="Email" wrapperCol={{ span: 16 }}>
           <Input />
         </Form.Item>
         <Form.Item
           name="companyName"
-          label="companyName"
-          wrapperCol={{ span: 12 }}
+          label="Company Name"
+          wrapperCol={{ span: 18 }}
         >
           <Input />
         </Form.Item>
 
        
         <Form.Item
-          wrapperCol={{ span: 8 }}
+          // wrapperCol={{ span: 8 }}
           style={{ display: "flex", justifyContent: "end" }}
         >
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
-            </Form.Item>
+        </Form.Item>
       </Form>
 
 

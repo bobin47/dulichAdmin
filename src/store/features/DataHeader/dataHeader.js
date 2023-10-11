@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { apiHeaderData } from "../../../api/headerData";
 
 const initialState = {
-    dataHeader: [],
+    slideHeader: [],
 };
 
 export const getAllDataHeader = createAsyncThunk(
@@ -18,7 +18,8 @@ const getAllDataHeaderBuilder = (
 ) => {
     builder.addCase(getAllDataHeader.fulfilled, (state, action) => {
         console.log(action.payload);
-       
+        const { slideHeader } = action.payload.data
+        state.slideHeader = slideHeader
 
     });
     builder.addCase(getAllDataHeader.pending, (state, action) => { });

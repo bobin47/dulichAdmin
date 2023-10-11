@@ -39,18 +39,18 @@ export default function DataFooter() {
       ),
     },
     {
-      title: "phoneNumber",
+      title: "Phone Number",
       dataIndex: "phoneNumber",
       key: "phoneNumber",
       width: 150,
     },
     {
-      title: "email",
+      title: "Email",
       dataIndex: "email",
       key: "email",
     },
     {
-      title: "companyName",
+      title: "Company Name",
       dataIndex: "companyName",
       key: "companyName",
     },
@@ -82,8 +82,7 @@ export default function DataFooter() {
     //  dispatch(getAllCompany(param));
   };
   const onRefresh = () => {
-    const param = { limit, page };
-    // dispatch(getAllTour(param))
+    dispatch(getDataFooter())
   };
 
   const showDrawer = (record) => {
