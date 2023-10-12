@@ -4,28 +4,60 @@ import { apiCategory } from "../../../api/tour";
 const initialState = {
   total:0,
   tours: [],
+  allTours: [],
+  listSelected:[]
 };
 
-export const getAllTour = createAsyncThunk(
-  "post/getAll",
+export const GetToursAll = createAsyncThunk(
+  "post/GetToursAll",
+  async (data, thunk) => {
+    const response = await apiCategory.getAllTour();
+    return response;
+  }
+);
+
+const GetToursAllBuilder = (
+  builder
+) => {
+  builder.addCase(GetToursAll.fulfilled, (state, action) => {
+    console.log(action.payload);
+    const { tours, totalTours, listSelected } = action.payload.data;
+    const newKey = "key"
+    let currentValue = 1
+    tours.forEach(function (obj) {
+      // obj[newKey] = obj._id;
+      obj.key = obj._id
+      // currentValue++;
+    });
+    state.listSelected = listSelected
+    state.total = totalTours;
+    state.allTours = tours;
+
+  });
+  builder.addCase(GetToursAll.pending, (state, action) => { });
+  builder.addCase(GetToursAll.rejected, (state, action) => { });
+};
+
+export const GetTours = createAsyncThunk(
+  "post/getTours",
   async (data, thunk) => {
     const response = await apiCategory.getAllTour(data);
     return response;
   }
 );
 
-const getAllTourBuilder = (
+const GetToursBuilder = (
   builder
 ) => {
-  builder.addCase(getAllTour.fulfilled, (state, action) => {
+  builder.addCase(GetTours.fulfilled, (state, action) => {
     console.log(action.payload);
     const { tours, totalTours } = action.payload.data;
     state.total = totalTours;
     state.tours = tours;
    
   });
-  builder.addCase(getAllTour.pending, (state, action) => {});
-  builder.addCase(getAllTour.rejected, (state, action) => {});
+  builder.addCase(GetTours.pending, (state, action) => {});
+  builder.addCase(GetTours.rejected, (state, action) => {});
 };
 
 export const createTour = createAsyncThunk(
@@ -96,7 +128,8 @@ const tourSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    getAllTourBuilder(builder)
+    GetToursAllBuilder(builder)
+    GetToursBuilder(builder)
     createTourBuilder(builder)
     editTourBuilder(builder)
     deleteTourBuilder(builder)

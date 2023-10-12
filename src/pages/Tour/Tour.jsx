@@ -5,7 +5,7 @@ import Filter from '../../components/Filter/Filter';
 import TableComponent from '../../components/TableComponent/TableComponent';
 import DrawerComponent from '../../components/DrawerComponent/DrawerComponent';
 import "./index.css"
-import { deleteTour, getAllTour } from '../../store/features/tour/tourSlice';
+import { GetTours, deleteTour } from '../../store/features/tour/tourSlice';
 import FormTour from './components/FormTour/FormTour';
 
 export default function Tour() {
@@ -70,7 +70,7 @@ export default function Tour() {
 
   useEffect(()=>{
   const param = { limit, page };
-  dispatch(getAllTour(param))
+    dispatch(GetTours(param))
   },[])
 
   const onSearch = (value) => {
@@ -91,7 +91,7 @@ export default function Tour() {
 
   const onRefresh = () => {
     const param = { limit, page };
-    dispatch(getAllTour(param))
+    dispatch(GetTours(param))
   };
 
   const showDrawer = (record) => {
@@ -126,8 +126,8 @@ export default function Tour() {
   };
 
   const handlePagination = (current, size) => {
-    const param = { limit: size, page: current };
-    // dispatch(getAllTour(param));
+    const param = { perpage: size, page: current };
+    dispatch(GetTours(param));
     setPage(current);
   };
 

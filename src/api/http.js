@@ -25,6 +25,7 @@ class Http {
         return config;
       },
       function(error) {
+        console.log("request",error)
         // Do something with request error
         return Promise.reject(error);
       }
@@ -68,6 +69,7 @@ class Http {
         return response;
       },
       function(error) {
+        console.log("response",error)
         if (error.config.url === "/user/login") {
           message.error("error");
         }

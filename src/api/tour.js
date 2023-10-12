@@ -2,6 +2,9 @@ import {http} from "../api/http";
 
 export const apiCategory = {
   getAllTour: (params) => {
+    if(!params){
+      return http.get("tour/getPaginationTour");
+    }
     console.log(params)
     return http.get("tour/getPaginationTour", { params });
   },
