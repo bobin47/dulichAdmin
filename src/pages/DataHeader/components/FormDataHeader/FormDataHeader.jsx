@@ -12,12 +12,12 @@ export default function FormDataHeader({ dispatch, form }) {
   return (
       <Form
         form={form}
-          name="dynamic_form_nest_item"
-          onFinish={onFinish}
-          style={{
-              maxWidth: 600,
-          }}
-          autoComplete="off"
+        name="dynamic_form_nest_item"
+        onFinish={onFinish}
+        style={{
+            maxWidth: 600,
+        }}
+        autoComplete="off"
       >
           <Form.List name="listURL">
               {(fields, { add, remove }) => (

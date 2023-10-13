@@ -57,7 +57,5 @@ export default function FormComponent({ action, form, dispatch }) {
           </Button>
         </Form.Item>
       </Form>
-
-
     </div>)
 }

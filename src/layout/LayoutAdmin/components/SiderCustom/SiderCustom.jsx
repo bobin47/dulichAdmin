@@ -13,13 +13,13 @@ export default function SiderCustom() {
 
   const items = [
     {
-      key: "dashboard",
+      key: "tourHot",
       icon: (
-        <Link to={"dashboard"}>
+        <Link to={"tourHot"}>
           <FundProjectionScreenOutlined />
         </Link>
       ),
-      label: "Dashboard",
+      label: "Tour Hot",
     },
     {
       key: "tour",

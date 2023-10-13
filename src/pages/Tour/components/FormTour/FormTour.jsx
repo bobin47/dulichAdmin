@@ -1,12 +1,12 @@
 import { Button, Form, Input } from "antd";
 import { createTour, editTour } from "../../../../store/features/tour/tourSlice";
-import CkeditorTour from "../Ckeditor/CkeditorTour";
+import CkeditorTour from "../../../../components/Ckeditor/CkeditorTour";
 
 export default function FormTour({ category, dispatch, form, action }) {
   const onFinish = (values) => {
     if(action){
         console.log(values)
-        // dispatch(createTour(values))
+        dispatch(createTour(values))
     }else{
         const data = {
             id:values._id,
@@ -19,7 +19,7 @@ export default function FormTour({ category, dispatch, form, action }) {
             }
         }
         console.log(data)
-        // dispatch(editTour(data))
+        dispatch(editTour(data))
     }
     
   };
@@ -58,7 +58,6 @@ export default function FormTour({ category, dispatch, form, action }) {
         </Form.Item>
 
         <Form.Item name="content" label="content">
-          {/* <CustomCKEditor /> */}
           <CkeditorTour />
         </Form.Item>
         <Form.Item

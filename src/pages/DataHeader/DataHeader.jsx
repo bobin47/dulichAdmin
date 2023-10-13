@@ -1,138 +1,95 @@
-import React, { useEffect, useState } from 'react'
-import "./index.css"
+import React, { useEffect } from 'react'
 import Filter from '../../components/Filter/Filter'
-import TableComponent from '../../components/TableComponent/TableComponent'
-import DrawerComponent from '../../components/DrawerComponent/DrawerComponent'
-import { Button, Space, Form } from 'antd'
+import { Button, Space, Form, Input, Row, Col } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllDataHeader } from '../../store/features/DataHeader/dataHeader'
-import FormDataHeader from './components/FormDataHeader/FormDataHeader'
+import { editDataHeader, getAllDataHeader } from '../../store/features/DataHeader/dataHeader'
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import "./index.css"
 
 export default function DataHeader() {
   const dispatch  = useDispatch()
-  const { slideHeader } = useSelector(state => state.dataHeader)
-  const [limit, setLimit] = useState(10);
-  const [page, setPage] = useState(1);
-  const [action, setAction] = useState();
-  const [open, setOpen] = useState(false);
+  const { listURL } = useSelector(state => state.dataHeader)
   const [form] = Form.useForm();
-  const columns = [
-    {
-      title: "Id",
-      dataIndex: "_id",
-      key: "_id",
-      render: (text, record, index) => <a>{index + 1}</a>,
-      fixed: "left",
-      width: 150,
-    },
-    {
-      title: "List url",
-      dataIndex: "listURL",
-      key: "listURL",
-      ellipsis: true,
-    },
-    {
-      title: "updatedAt",
-      dataIndex: "updatedAt",
-      key: "updatedAt",
-      
-    },
-
-    {
-      title: "createdAt",
-      dataIndex: "createdAt",
-      key: "createdAt",
-    },
-    {
-      title: "Action",
-      key: "action",
-      render: (_, record) => (
-        <Space size="middle">
-          <Button onClick={() => showDrawer(record)} type="primary">
-            Edit
-          </Button>
-          {/* <Button danger onClick={() => handleDelete(record)}>
-            Delete
-          </Button> */}
-        </Space>
-      ),
-      fixed: "right",
-      width: 180,
-    },
-  ];
-
 
   useEffect(()=>{
     dispatch(getAllDataHeader())
   },[])
 
-  console.log(slideHeader)
+  if (listURL){
+    form.setFieldsValue({
+      listURL: listURL
+    });
+  }
 
-  const onSearch = (value) => {
-    // const param = { limit, page, search: value };
-    //  dispatch(getAllCompany(param));
+  const onFinish = (values) => {
+    console.log('Received values of form:', values);
+    dispatch(editDataHeader(values))
+
   };
 
-  const onRefresh = () => {
-    const param = { limit, page };
-    // dispatch(getAllTour(param))
+  const handleInputChange = (e) => {
+    console.log(e.target.value)
   };
 
-  const showDrawer = (record) => {
-    console.log(record)
-    const isCheck = record._id === undefined;
-    setAction(isCheck);
-    if (!isCheck) {
-      form.setFieldsValue({
-        listURL: record.listURL
-      });
-    }
-    // if (isCheck) {
-    //   form.setFieldsValue({
-    //     title: "",
-    //     price: "",
-    //     brief: "",
-    //     description: "",
-    //     content: "",
-    //   });
-    // }
-
-    setOpen(true);
-  };
-
-  const onClose = () => {
-    setOpen(false);
-  };
-
-  
   return <div className="container">
     <div className="filter">
       <Filter
         hide={false}
-        onSearch={onSearch}
-        onRefresh={onRefresh}
-        showDrawer={showDrawer}
         onCreate={false}
       />
     </div>
-    <TableComponent
-      // x={1500}
-      columns={columns}
-      dataSource={slideHeader}
-      page={page}
-      total={1}
-      pageSize={limit}
-      // handlePagination={handlePagination}
-    />
+    <Form
+      form={form}
+      name="dynamic_form_nest_item"
+      onFinish={onFinish}
+      autoComplete="off"
+    >
+      <Form.List name="listURL">
+        {(fields, { add, remove }) => (
+          <>
+          <Row >
+              {fields.map(({ key, name, ...restField }) => {
+                return <Col span={5}>
+                  <Space
+                    key={key}
+                    style={{
+                      display: 'flex',
+                      marginBottom: 8,
+                    }}
+                    align="baseline"
+                  >
+                    <Form.Item
+                      {...restField}
+                      name={[name]}
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Missing first URL',
+                        },
+                      ]}
+                    >
+                      <Input placeholder="URL" onChange={handleInputChange} />
+                    </Form.Item>
+                    <MinusCircleOutlined onClick={() => remove(name)} />
 
-    <DrawerComponent
-      width={500}
-      onClose={onClose}
-      open={open}
-      name={`Data Header ${action ? "Create" : "Edit"}`}
-      FormComponent={
-        <FormDataHeader action={action} dispatch={dispatch} form={form} />
-      }
-    />
+                  </Space>
+                </Col>
+              })}
+          </Row>
+            <Form.Item style={{ width: "200px" }}>
+              <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+                Add field
+              </Button>
+            </Form.Item>
+          </>
+        )}
+      </Form.List>
+     
+      <Form.Item>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form.Item>
+    </Form>
   </div>
 }

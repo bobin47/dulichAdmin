@@ -40,7 +40,7 @@ export default function useRouteElement() {
               ),
               children:[
                 {path:"tour", element:<Tour/>},
-                {path:"dashboard", element:<Dashboard/>},
+                { path:"tourHot", element:<Dashboard/>},
                 { path: "dataFooter", element: <DataFooter /> },
                 { path: "dataHeader", element: <DataHeader /> }
               ]

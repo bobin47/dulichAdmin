@@ -1,13 +1,11 @@
 import axios from "axios";
 import { message } from "antd";
-import { getAccessTokenFormLC, setAccessTokenFormLC, setUserFormLC } from "../utils/utils";
-const url = "https://elearning0706.cybersoft.edu.vn/api";
-const urlDulich = "http://localhost:4000/";
+import { URLSERVE, getAccessTokenFormLC, setAccessTokenFormLC, setUserFormLC } from "../utils/utils";
 
 class Http {
   constructor() {
     this.https = axios.create({
-      baseURL: urlDulich,
+      baseURL: URLSERVE,
       timeout: 100000,
     });
 

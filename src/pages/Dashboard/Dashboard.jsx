@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Space, Table, Tooltip } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetToursAll } from '../../store/features/tour/tourSlice';
+import { URLSERVE } from '../../utils/utils';
 
 const DisabledRowsTable = () => {
   const columns = [
@@ -61,7 +62,7 @@ const DisabledRowsTable = () => {
  
   useEffect(()=>{
     dispatch(GetToursAll())
-    fetch('http://localhost:4000/tour/getPaginationTour')
+    fetch(`${URLSERVE}/tour/getPaginationTour`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
