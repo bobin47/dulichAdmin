@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import Filter from '../../components/Filter/Filter';
 import TableComponent from '../../components/TableComponent/TableComponent';
 import DrawerComponent from '../../components/DrawerComponent/DrawerComponent';
-import "./index.css"
 import { GetTours, deleteTour } from '../../store/features/tour/tourSlice';
 import FormTour from './components/FormTour/FormTour';
+import "./index.css"
 
 export default function Tour() {
    const dispatch = useDispatch();
@@ -23,15 +23,13 @@ export default function Tour() {
       dataIndex: "_id",
       key: "_id",
       render: (text, record, index) => <a>{index + 1}</a>,
-      fixed: "left",
-      width: 150,
+   
     },
     {
       title: "Title",
       dataIndex: "title",
       key: "title",
-      fixed: "left",
-      width: 350,
+    
       ellipsis: true,
       render: (title) => (
         <Tooltip placement="topLeft" title={title}>
@@ -43,7 +41,6 @@ export default function Tour() {
       title: "Description",
       dataIndex: "description",
       key: "description",
-      width: 150,
     },
     {
       title: "Price",
@@ -63,8 +60,6 @@ export default function Tour() {
           </Button>
         </Space>
       ),
-      fixed: "right",
-      width: 180,
     },
   ];
 

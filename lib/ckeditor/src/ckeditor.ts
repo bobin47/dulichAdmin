@@ -101,7 +101,6 @@ class Editor extends ClassicEditor {
     TableColumnResize,
     TableProperties,
     TableToolbar,
-    Title,
     Underline,
     UploadAdapter,
   ];

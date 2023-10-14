@@ -3,7 +3,7 @@ import "./index.css"
 import Filter from '../../components/Filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeDataFooter, getDataFooter } from '../../store/features/DataFooter/dataFooter';
-import { Button, Space, Tooltip, Form, Input } from 'antd';
+import { Button,Form, Input } from 'antd';
 
 export default function DataFooter() {
   const dispatch = useDispatch();

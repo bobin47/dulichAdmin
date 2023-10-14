@@ -3,6 +3,8 @@ import {
   FundProjectionScreenOutlined,
   BankOutlined,
   ProjectOutlined,
+  IdcardOutlined,
+  PartitionOutlined
 } from "@ant-design/icons";
 import { Menu, MenuProps } from "antd";
 import { Link, NavLink, useLocation } from "react-router-dom";
@@ -51,24 +53,24 @@ export default function SiderCustom() {
       label: "Data Footer",
     },
 
-    // {
-    //   key: "post",
-    //   icon: (
-    //     <NavLink to={path.post}>
-    //       <IdcardOutlined />
-    //     </NavLink>
-    //   ),
-    //   label: "Post",
-    // },
-    // {
-    //   key: "category",
-    //   icon: (
-    //     <NavLink to={path.category}>
-    //       <PartitionOutlined />
-    //     </NavLink>
-    //   ),
-    //   label: "Category",
-    // },
+    {
+      key: "AboutUsHome",
+      icon: (
+        <NavLink to={"aboutUsHome"}>
+          <IdcardOutlined />
+        </NavLink>
+      ),
+      label: "About Us Home",
+    },
+    {
+      key: "About Us Detail",
+      icon: (
+        <NavLink to={"aboutUsDetail"}>
+          <PartitionOutlined />
+        </NavLink>
+      ),
+      label: "About Us Detail",
+    },
   ];
 
   return (
