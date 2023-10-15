@@ -35,7 +35,7 @@ export default function SignIn() {
 
   useEffect(()=>{
     if(isAuthenticated){
-      navigate("/admin/tour")
+      navigate("/tour")
     }
   },[isAuthenticated])
 

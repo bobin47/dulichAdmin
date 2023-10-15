@@ -23,7 +23,7 @@ function RejectRoute() {
 
 function IsAdmin() {
   const data = JSON.parse(localStorage.getItem("user"));
-  return data ? <Outlet /> : <Navigate to="/admin" />;
+  return data ? <Outlet /> : <Navigate to="/" />;
 }
 
 export default function useRouteElement() {
@@ -37,7 +37,7 @@ export default function useRouteElement() {
           element: <IsAdmin />,
           children: [
             {
-              path: "/admin",
+              path: "/",
               element: (
                   <Admin />
               ),

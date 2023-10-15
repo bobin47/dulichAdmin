@@ -30,3 +30,11 @@ export const clearLC = () => {
   localStorage.removeItem("user");
   localStorage.removeItem("refresh_token");
 };
+
+export const capitalizeWords = (str) => {
+  let words = str.split(/(?=[A-Z ])/);
+
+  words = words.map(word => word.trim().charAt(0).toUpperCase() + word.slice(1).toLowerCase());
+
+  return words.join(' ');
+}

@@ -69,12 +69,13 @@ export default function DataHeader() {
                       <Input placeholder="URL" onChange={handleInputChange} />
                     </Form.Item>
                     <MinusCircleOutlined onClick={() => remove(name)} />
-
+                      
                   </Space>
                 </Col>
               })}
           </Row>
             <Form.Item style={{ width: "200px" }}>
+             
               <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
                 Add field
               </Button>

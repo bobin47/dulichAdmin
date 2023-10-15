@@ -30,6 +30,7 @@ class Http {
 
     this.https.interceptors.response.use(
       function(response) {
+        
         const { url } = response.config;
         if (url === "/user/login") {
           message.success("Login ok");

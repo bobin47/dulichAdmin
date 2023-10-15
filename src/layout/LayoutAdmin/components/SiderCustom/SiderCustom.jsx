@@ -11,7 +11,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 
 export default function SiderCustom() {
   const location = useLocation();
-  const linkString = location.pathname.split("/admin/")[1];
+  const linkString = location.pathname.split("/")[1];
 
   const items = [
     {

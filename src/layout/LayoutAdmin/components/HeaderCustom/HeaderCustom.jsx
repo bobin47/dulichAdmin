@@ -1,16 +1,17 @@
 import { Breadcrumb, Col, Row } from "antd";
 import MenuDropdown from "../MenuDropdown/MenuDropdown";
 import { useLocation } from "react-router-dom";
+import { capitalizeWords } from "../../../../utils/utils";
 
 export default function HeaderCustom() {
   const location = useLocation();
-  const linkString = location.pathname.split("/admin/")[1];
+  const linkString = location.pathname.split("/")[1];
   return (
     <Row>
       <Col span={8}>
         <Breadcrumb style={{ marginTop: "20px" }}>
-          <Breadcrumb.Item>admin</Breadcrumb.Item>
-          <Breadcrumb.Item>{linkString}</Breadcrumb.Item>
+          <Breadcrumb.Item>Admin</Breadcrumb.Item>
+          <Breadcrumb.Item>{capitalizeWords(linkString)}</Breadcrumb.Item>
         </Breadcrumb>
       </Col>
       <Col span={2} offset={14}>
