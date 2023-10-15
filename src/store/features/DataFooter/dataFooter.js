@@ -18,7 +18,6 @@ const getDataFooterBuilder = (
     builder
 ) => {
     builder.addCase(getDataFooter.fulfilled, (state, action) => {
-        console.log(action.payload.data.dataFooter);
         const { dataFooter } = action.payload.data
         state.dataFooter = dataFooter
     });
@@ -29,7 +28,6 @@ const getDataFooterBuilder = (
 export const changeDataFooter = createAsyncThunk(
     "dataFooter/changeDataFooter",
     async (data: any, thunk) => {
-        console.log(data)
         const response = await apiFooterData.updateFooterData(data);
         return response;
     }
@@ -39,7 +37,6 @@ const editTourBuilder = (
     builder
 ) => {
     builder.addCase(changeDataFooter.fulfilled, (state, action) => {
-        console.log(action.payload);
     });
     builder.addCase(changeDataFooter.pending, (state, action) => { });
     builder.addCase(changeDataFooter.rejected, (state, action) => { });

@@ -37,10 +37,8 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(registerAccount.fulfilled, (state, action) => {
-      console.log(action);
     });
     builder.addCase(registerAccount.rejected, (state, action) => {
-      console.log(action);
       if (action) {
         toast.error("Đăng ký thất bại");
       }
@@ -50,7 +48,6 @@ const authSlice = createSlice({
     builder.addCase(loginAccount.fulfilled, (state, action) => {
       const { user } = action.payload;
       state.isAuthenticated = true;
-      console.log(user);
       state.user = user;
       state.user = getUserFormLC();
     

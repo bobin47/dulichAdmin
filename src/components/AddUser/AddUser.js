@@ -25,7 +25,6 @@ export default function AddUser(props) {
   };
 
   const onFinish = (values) => {
-    console.log("Success:", values);
     dispatch(addUserAction(values));
   };
 

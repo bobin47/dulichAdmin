@@ -22,13 +22,11 @@ export default function DataHeader() {
   }
 
   const onFinish = (values) => {
-    console.log('Received values of form:', values);
     dispatch(editDataHeader(values))
 
   };
 
   const handleInputChange = (e) => {
-    console.log(e.target.value)
   };
 
   return <div className="container">

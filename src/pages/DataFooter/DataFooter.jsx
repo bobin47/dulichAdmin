@@ -12,7 +12,6 @@ export default function DataFooter() {
 
   useEffect(()=>{
     dispatch(getDataFooter())
-    console.log(dataFooter)
   },[])
 
   if (dataFooter) {
@@ -26,7 +25,6 @@ export default function DataFooter() {
   }
 
   const onFinish = (values) => {
-   console.log(values)
     dispatch(changeDataFooter(values))
   };
 

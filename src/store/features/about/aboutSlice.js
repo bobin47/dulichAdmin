@@ -38,7 +38,6 @@ const updateDataAboutHomeBuilder = (
     builder
 ) => {
     builder.addCase(updateDataAboutHome.fulfilled, (state, action) => {
-        console.log(action.payload)
     });
     builder.addCase(updateDataAboutHome.pending, (state, action) => { });
     builder.addCase(updateDataAboutHome.rejected, (state, action) => { });
@@ -75,7 +74,6 @@ const updateDataAboutDetailBuilder = (
     builder
 ) => {
     builder.addCase(updateDataAboutDetail.fulfilled, (state, action) => {
-        console.log(action.payload)
     });
     builder.addCase(updateDataAboutDetail.pending, (state, action) => { });
     builder.addCase(updateDataAboutDetail.rejected, (state, action) => { });

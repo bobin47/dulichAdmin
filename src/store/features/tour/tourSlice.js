@@ -20,7 +20,6 @@ const GetToursAllBuilder = (
   builder
 ) => {
   builder.addCase(GetToursAll.fulfilled, (state, action) => {
-    console.log(action.payload);
     const { tours, totalTours, listSelected } = action.payload.data;
     const newKey = "key"
     let currentValue = 1
@@ -50,7 +49,6 @@ const GetToursBuilder = (
   builder
 ) => {
   builder.addCase(GetTours.fulfilled, (state, action) => {
-    console.log(action.payload);
     const { tours, totalTours } = action.payload.data;
     state.total = totalTours;
     state.tours = tours;
@@ -72,7 +70,6 @@ const createTourBuilder = (
   builder
 ) => {
   builder.addCase(createTour.fulfilled, (state, action) => {
-    console.log(action.payload);
    
    
   });
@@ -92,7 +89,6 @@ const editTourBuilder = (
   builder
 ) => {
   builder.addCase(editTour.fulfilled, (state, action) => {
-    console.log(action.payload);
    
    
   });
@@ -103,7 +99,6 @@ const editTourBuilder = (
 export const deleteTour = createAsyncThunk(
   "post/deleteTour",
   async (data, thunk) => {
-    console.log(data)
     const response = await apiCategory.deleteTour(data);
     return response;
   }
@@ -113,7 +108,6 @@ const deleteTourBuilder = (
   builder
 ) => {
   builder.addCase(deleteTour.fulfilled, (state, action) => {
-    console.log(action.payload);
   });
   builder.addCase(deleteTour.pending, (state, action) => {});
   builder.addCase(deleteTour.rejected, (state, action) => {});
@@ -122,7 +116,6 @@ const deleteTourBuilder = (
 export const hotTour = createAsyncThunk(
   "post/hotTour",
   async (data, thunk) => {
-    console.log(data)
     const response = await apiCategory.hotTour(data);
     return response;
   }
@@ -132,7 +125,6 @@ const HotTourBuilder = (
   builder
 ) => {
   builder.addCase(hotTour.fulfilled, (state, action) => {
-    console.log(action.payload);
   });
   builder.addCase(hotTour.pending, (state, action) => { });
   builder.addCase(hotTour.rejected, (state, action) => { });

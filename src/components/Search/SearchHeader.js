@@ -32,7 +32,6 @@ export default function SearchHeader() {
 
       const handleSearch = (e) =>{
         setValueSearch(e.target.value)
-        console.log(valueSearch)
       }
     
       useEffect(() => {

@@ -90,7 +90,6 @@ export default function Tour() {
   };
 
   const showDrawer = (record) => {
-    console.log(record)
     const isCheck = record._id === undefined;
     setAction(isCheck);
     if (!isCheck){
@@ -101,6 +100,7 @@ export default function Tour() {
         brief: record.brief,
         description: record.description,
         content: record.content,
+        image: record.image,
       });
     }
     if (isCheck){
@@ -110,6 +110,7 @@ export default function Tour() {
         brief: "",
         description: "",
         content: "",
+        image:""
       });
     }
    

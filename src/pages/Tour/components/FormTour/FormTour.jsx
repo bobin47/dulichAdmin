@@ -5,7 +5,6 @@ import CkeditorTour from "../../../../components/Ckeditor/CkeditorTour";
 export default function FormTour({ category, dispatch, form, action }) {
   const onFinish = (values) => {
     if(action){
-        console.log(values)
         dispatch(createTour(values))
     }else{
         const data = {
@@ -14,11 +13,11 @@ export default function FormTour({ category, dispatch, form, action }) {
                 brief: values.brief,
                 content: values.content,
                 description: values.description,
+                image: values.image,
                 price: values.price,
                 title: values.title
             }
         }
-        console.log(data)
         dispatch(editTour(data))
     }
     
@@ -44,6 +43,9 @@ export default function FormTour({ category, dispatch, form, action }) {
           <Input />
         </Form.Item>
         <Form.Item name="price" label="price" wrapperCol={{ span: 8 }}>
+          <Input />
+        </Form.Item>
+        <Form.Item name="image" label="image" wrapperCol={{ span: 8 }}>
           <Input />
         </Form.Item>
         <Form.Item name="brief" label="brief" wrapperCol={{ span: 8 }}>

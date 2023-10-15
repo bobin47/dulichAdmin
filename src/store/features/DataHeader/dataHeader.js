@@ -17,7 +17,6 @@ const getAllDataHeaderBuilder = (
     builder
 ) => {
     builder.addCase(getAllDataHeader.fulfilled, (state, action) => {
-        console.log(action.payload);
         const { listURL } = action.payload.data.slideHeader
         state.listURL = listURL
 
@@ -38,7 +37,6 @@ const editTourBuilder = (
     builder
 ) => {
     builder.addCase(editDataHeader.fulfilled, (state, action) => {
-        console.log(action.payload);
 
 
     });

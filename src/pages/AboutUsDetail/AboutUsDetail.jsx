@@ -11,7 +11,6 @@ export default function AboutUsDetail() {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    console.log(values)
     dispatch(updateDataAboutDetail(values))
   };
 

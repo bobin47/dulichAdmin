@@ -2,7 +2,6 @@ import { http } from "../api/http";
 
 export const apiFooterData = {
     getFooterData: (params) => {
-        console.log(params)
         return http.get("datafooter/getdatafooter", { params });
     },
     // createTour: (body) => {

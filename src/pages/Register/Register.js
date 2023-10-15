@@ -25,11 +25,9 @@ export default function Register() {
 
   const handleRegister = handleSubmit(
     (data) => {
-      console.log(data);
       dispatch(registerAccount(data));
     },
     (data) => {
-      console.log(data);
       toast.error(messError);
     }
   );

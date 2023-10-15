@@ -5,7 +5,6 @@ import { editDataHeader } from '../../../../store/features/DataHeader/dataHeader
 
 export default function FormDataHeader({ dispatch, form }) {
     const onFinish = (values) => {
-        console.log('Received values of form:', values);
         dispatch(editDataHeader(values))
 
     };

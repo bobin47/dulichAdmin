@@ -5,7 +5,6 @@ import { changeDataFooter } from '../../../../store/features/DataFooter/dataFoot
 export default function FormComponent({ action, form, dispatch }) {
   const onFinish = (values) => {
     if (action) {
-      console.log(values)
       // dispatch(createTour(values))
     } else {
         dispatch(changeDataFooter(values))

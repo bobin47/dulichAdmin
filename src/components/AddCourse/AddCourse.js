@@ -32,7 +32,6 @@ export default function AddCourse() {
       ngayTao: day,
     };
 
-    console.log(data);
     const formData = new FormData();
     for (const key in data) {
       formData.append(key, data[key]);
@@ -48,7 +47,6 @@ export default function AddCourse() {
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
   };
 
   useEffect(() => {

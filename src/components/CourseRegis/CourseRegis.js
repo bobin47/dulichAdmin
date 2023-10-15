@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { detailCourseAction } from "../../store/features/CourseSlice/CourseSlice";
 
 export default function CourseRegis({ id }) {
-  console.log(id);
 
   return (
     <div>

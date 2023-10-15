@@ -10,7 +10,6 @@ export default function AboutUsHome() {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    console.log(values)
    
     dispatch(updateDataAboutHome(values))
   };

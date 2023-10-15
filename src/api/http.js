@@ -1,6 +1,6 @@
 import axios from "axios";
 import { message } from "antd";
-import { URLSERVE, getAccessTokenFormLC, setAccessTokenFormLC, setUserFormLC } from "../utils/utils";
+import { URLSERVE, clearLC, getAccessTokenFormLC, setAccessTokenFormLC, setUserFormLC } from "../utils/utils";
 
 class Http {
   constructor() {
@@ -23,7 +23,6 @@ class Http {
         return config;
       },
       function(error) {
-        console.log("request",error)
         // Do something with request error
         return Promise.reject(error);
       }
@@ -32,13 +31,10 @@ class Http {
     this.https.interceptors.response.use(
       function(response) {
         const { url } = response.config;
-        console.log(url)
         if (url === "/user/login") {
           message.success("Login ok");
           const data = response.data;
-          console.log(data);
           const { token, user } = data;
-          console.log(token, user);
           setAccessTokenFormLC(token);
           setUserFormLC(user);
          
@@ -78,7 +74,13 @@ class Http {
         return response;
       },
       function(error) {
-        console.log("response",error)
+        if (error.response.status === 405){
+          message.error("Token het hang vui long dang nhap lai");
+          setTimeout(() => {
+            clearLC()
+            document.location.assign("/login")
+          }, 2000);
+        }
         if (error.config.url === "/user/login") {
           message.error("error");
         }
