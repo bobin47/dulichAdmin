@@ -63,6 +63,17 @@ class Http {
           message.success("Cap nhat Oke");
         }
 
+        if (url.includes("aboutus/update-about-us-home")){
+          message.success("Cap nhat Oke");
+        }
+
+        if (url.includes("aboutus/update-about-us-detail")) {
+          message.success("Cap nhat Oke");
+        }
+
+        if (url.includes("tour/postRecommentTour")) {
+          message.success("Cap nhat Oke");
+        }
 
         return response;
       },

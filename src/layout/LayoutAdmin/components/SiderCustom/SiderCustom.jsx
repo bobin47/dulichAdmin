@@ -54,7 +54,7 @@ export default function SiderCustom() {
     },
 
     {
-      key: "AboutUsHome",
+      key: "aboutUsHome",
       icon: (
         <NavLink to={"aboutUsHome"}>
           <IdcardOutlined />
@@ -63,7 +63,7 @@ export default function SiderCustom() {
       label: "About Us Home",
     },
     {
-      key: "About Us Detail",
+      key: "aboutUsDetail",
       icon: (
         <NavLink to={"aboutUsDetail"}>
           <PartitionOutlined />

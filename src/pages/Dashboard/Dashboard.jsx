@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Space, Table, Tooltip } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetToursAll } from '../../store/features/tour/tourSlice';
+import { GetToursAll, hotTour } from '../../store/features/tour/tourSlice';
 import { URLSERVE } from '../../utils/utils';
 
 const DisabledRowsTable = () => {
@@ -83,7 +83,10 @@ const DisabledRowsTable = () => {
   };
 
   const callApi = () => {
-    console.log(selectedRowKeys)
+    const data = { listSelected: selectedRowKeys }
+    dispatch(
+      hotTour(data)
+    )
     setEditAction(true)
 
   }

@@ -119,6 +119,25 @@ const deleteTourBuilder = (
   builder.addCase(deleteTour.rejected, (state, action) => {});
 };
 
+export const hotTour = createAsyncThunk(
+  "post/hotTour",
+  async (data, thunk) => {
+    console.log(data)
+    const response = await apiCategory.hotTour(data);
+    return response;
+  }
+);
+
+const HotTourBuilder = (
+  builder
+) => {
+  builder.addCase(hotTour.fulfilled, (state, action) => {
+    console.log(action.payload);
+  });
+  builder.addCase(hotTour.pending, (state, action) => { });
+  builder.addCase(hotTour.rejected, (state, action) => { });
+};
+
 
 
 
@@ -133,6 +152,7 @@ const tourSlice = createSlice({
     createTourBuilder(builder)
     editTourBuilder(builder)
     deleteTourBuilder(builder)
+    HotTourBuilder(builder)
   },
 });
 

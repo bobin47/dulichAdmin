@@ -1,17 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Filter from '../../components/Filter/Filter'
 import { Button, Form, Input } from 'antd';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CkeditorTour from '../../components/Ckeditor/CkeditorTour';
+import { getAllDataDetailHome, updateDataAboutDetail } from '../../store/features/about/aboutSlice';
 
 export default function AboutUsDetail() {
   const dispatch = useDispatch();
+  const { dataAboutDetail } = useSelector(state => state.about)
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
     console.log(values)
-    // dispatch(changeDataFooter(values))
+    dispatch(updateDataAboutDetail(values))
   };
+
+  useEffect(()=>{
+    dispatch(getAllDataDetailHome())
+  },[])
+
+  if (dataAboutDetail) {
+    form.setFieldsValue({
+      data: dataAboutDetail
+    })
+  }
 
   return (
     <div className="container">

@@ -1,6 +1,6 @@
 import {http} from './http'
 
-const apiAboutUs = {
+export const apiAboutUs = {
     getAboutHome: ()=>{
         return http.get("aboutus/getDataAboutUsHome")
     },

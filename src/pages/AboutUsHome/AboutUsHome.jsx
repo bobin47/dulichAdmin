@@ -1,16 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Filter from '../../components/Filter/Filter'
 import { Button, Form, Input } from 'antd';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllDataAboutHome, updateDataAboutHome } from '../../store/features/about/aboutSlice';
 
 export default function AboutUsHome() {
   const dispatch = useDispatch();
+  const { dataAboutHome } = useSelector(state => state.about)
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
     console.log(values)
-    // dispatch(changeDataFooter(values))
+   
+    dispatch(updateDataAboutHome(values))
   };
+
+  useEffect(()=>{
+    dispatch(getAllDataAboutHome())
+  },[])
+
+  if (dataAboutHome){
+    form.setFieldsValue({
+      data: dataAboutHome
+    })
+  }
 
   return (
     <div className="container">

@@ -17,4 +17,7 @@ export const apiCategory = {
   updateTour:(id, body)=>{
     return http.put(`tour/updateTour/${id}`,body)
   },
+  hotTour: (body)=>{
+    return http.post('tour/postRecommentTour', body)
+  }
 };
